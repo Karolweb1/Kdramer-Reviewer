@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Foro - Kdramer Reviewer</title>
+</head>
+<body class="foro">
+
+    <header class="barra-navegacion">
+        <nav>
+            <ul class="menu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../menus/foro.html">Foro</a></li>
+                <li><a href="../menus/categorias.html">Categorías</a></li>
+                <li><a href="../menus/plataformas.html">Plataformas</a></li>
+                <li><a href="../menus/series.html">Series</a></li>
+                <li><a href="../menus/cuenta.html">Cuenta</a></li>
+            </ul>
+        </nav>
+        <h1 class="titulo">Foro de Kdramas</h1>
+    </header>
+
+    <main>
+        <!-- Top 3 mejores doramas -->
+        <section class="top-dramas">
+            <h2>Top 3 de los Mejores Doramas</h2>
+            <div class="top-lista" id="top-3">
+                <!-- Los top 3 K-dramas aparecerán aquí -->
+            </div>
+        </section>
+
+        <!-- Foro de Discusión General -->
+        <section class="foro-discusion">
+            <h2>Discusión General</h2>
+            <textarea placeholder="Escribe tu mensaje aquí..." rows="4" cols="50"></textarea>
+            <button class="enviar" onclick="enviarMensaje('general')">Enviar</button>
+            <div class="mensajes" id="mensajes-general">
+                <!-- Mensajes del foro general -->
+            </div>
+        </section>
+
+        <!-- Foro de Recomendaciones -->
+        <section class="foro-recomendaciones">
+            <h2>Recomendaciones de Kdramas</h2>
+            <textarea placeholder="Recomienda un Kdrama..." rows="4" cols="50"></textarea>
+            <button class="enviar" onclick="enviarMensaje('recomendaciones')">Enviar</button>
+            <div class="mensajes" id="mensajes-recomendaciones">
+                <!-- Mensajes de recomendaciones -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Función para obtener el Top 3 de K-dramas basados en el porcentaje de votación
+        function obtenerTopKdramas() {
+            const votos = JSON.parse(localStorage.getItem('votos')) || {}; // Obtener votos desde el localStorage
+            const kdramas = [];
+
+            // Recopilar todos los K-dramas y sus datos de votos
+            for (const kdrama in votos) {
+                const votosKdrama = votos[kdrama].votos || [];
+                const promedioVoto = votosKdrama.reduce((acc, voto) => acc + voto, 0) / votosKdrama.length;
+                const porcentaje = Math.round((promedioVoto / 5) * 100); // Convertir promedio a porcentaje
+
+                kdramas.push({ nombre: kdrama, porcentaje: porcentaje, promedio: promedioVoto });
+            }
+
+            // Ordenar los K-dramas por porcentaje de mayor a menor
+            kdramas.sort((a, b) => b.porcentaje - a.porcentaje);
+
+            // Obtener los 3 primeros
+            return kdramas.slice(0, 3);
+        }
+
+        // Función para mostrar el Top 3 de K-dramas en el foro
+        function mostrarTop3() {
+            const top3 = obtenerTopKdramas();
+            const top3Container = document.getElementById('top-3');
+            top3Container.innerHTML = ''; // Limpiar el contenedor antes de agregar los elementos
+
+            top3.forEach((kdrama, index) => {
+                // Generar la ruta de la imagen
+                const imagenRuta = `../imagenes/${index + 1}dorama.jpg`;
+                const enlaceReseña = `../reseñas/${index + 1}dorama.html`;
+
+                // Verificar si la imagen existe (si no existe, colocar una imagen predeterminada)
+                const img = new Image();
+                img.src = imagenRuta;
+                img.onload = function() {
+                    // Si la imagen existe, se crea el artículo con la imagen
+                    crearArticulo(kdrama, imagenRuta, enlaceReseña, index);
+                };
+                img.onerror = function() {
+                    // Si la imagen no existe, usar una imagen predeterminada
+                    const imagenPredeterminada = '../imagenes/imagen_predeterminada.jpg';
+                    crearArticulo(kdrama, imagenPredeterminada, enlaceReseña, index);
+                };
+            });
+        }
+
+        // Función para crear el artículo con imagen, título y enlace
+        function crearArticulo(kdrama, imagenRuta, enlaceReseña, index) {
+            const top3Container = document.getElementById('top-3');
+
+            // Crea un artículo para cada K-drama con su imagen, porcentaje y enlace a la reseña
+            const dramaElement = document.createElement('article');
+            dramaElement.classList.add('drama');
+
+            dramaElement.innerHTML = `
+                <div class="top-rank">${index + 1}</div>
+                <a href="${enlaceReseña}">
+                    <img src="${imagenRuta}" alt="${kdrama.nombre}">
+                    <h3>${kdrama.nombre}</h3> <!-- Título del Kdrama debajo de la imagen -->
+                </a>
+                <span id="porcentaje-${kdrama.nombre}">Porcentaje: ${kdrama.porcentaje}%</span>
+            `;
+
+            top3Container.appendChild(dramaElement);
+        }
+
+        // Llamar la función para mostrar el Top 3 cuando la página cargue
+        window.onload = function () {
+            mostrarTop3(); // Muestra el Top 3 cuando se carga la página
+        };
+    </script>
+
+</body>
+</html>

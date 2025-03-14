@@ -1,0 +1,407 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #D5EAFF !important;
+}
+
+/* Barra de navegación */
+.barra-navegacion {
+    background-color: #895DFF;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+}
+
+/* Menú */
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.menu li {
+    margin: 0 15px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+}
+
+/* Asegurarnos de que solo afecta a la página principal */
+.pagina-principal .listado-dramas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+/* Cada drama en la página principal */
+.pagina-principal .listado-dramas .drama {
+    display: flex; 
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+/* Imagen de la página principal alineada a la izquierda */
+.pagina-principal .listado-dramas .drama img {
+    width: 150px; 
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 15px;
+    max-width: 150px;
+}
+
+/* Sistema de votación */
+.votacion {
+    display: flex;
+    justify-content: flex-start; /* Alinea las estrellas hacia la izquierda */
+    gap: 5px; /* Espaciado entre las estrellas */
+}
+
+/* Estilos de las estrellas */
+.estrellas {
+    display: flex;
+    direction: row;
+}
+
+.estrella {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0 5px;
+}
+
+/* Estilo cuando el mouse pasa sobre las estrellas */
+.estrella:hover {
+    color: gold;
+}
+
+/* Estilo para las estrellas seleccionadas */
+.estrella.seleccionada {
+    color: gold;
+}
+
+
+.porcentaje {
+    font-weight: bold;
+    color: #4a148c;
+}
+
+.top-rank {
+    font-size: 2.5rem; /* Ajuste del tamaño */
+    font-weight: bold;
+    color: #fff; /* Color blanco para el texto */
+    background-color: #f39c12; /* Fondo color dorado o un color llamativo */
+    padding: 10px 15px;
+    border-radius: 50%; /* Hacerlo circular */
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: absolute; /* Posicionamiento absoluto dentro del contenedor */
+    top: 10px; /* Posición desde la parte superior */
+    left: 10px; /* Posición desde la parte izquierda */
+    z-index: 1; /* Asegura que el número esté encima de la imagen */
+}
+
+/* Si quieres añadir un efecto de hover para hacer que el número sea interactivo */
+.top-rank:hover {
+    background-color: #e67e22; /* Cambiar el color de fondo al pasar el ratón */
+    transform: scale(1.1); /* Hacerlo un poco más grande */
+    cursor: pointer; /* Cambiar el cursor a puntero */
+}
+
+/* Estilo del cuadro del Top 3 */
+.top-dramas {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.top-lista {
+    display: flex;  /* Alínea los elementos horizontalmente */
+    justify-content: space-around; /* Espacio igual entre los artículos */
+    gap: 20px;  /* Espacio entre los artículos */
+    flex-wrap: wrap;  /* Permite que los artículos se acomoden en varias filas si es necesario */
+}
+
+.drama {
+    flex: 1 1 30%;  /* Los artículos ocuparán el 30% del contenedor (se ajusta al tamaño de la pantalla) */
+    max-width: 250px;  /* Máximo tamaño para cada artículo */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título "TOP 3" */
+.top-dramas h2 {
+    color: #895DFF;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Los tres mejores dramas dentro del Top 3 */
+.top-dramas .top-lista {
+    display: flex; /* Alinea los elementos en fila */
+    justify-content: space-between; /* Espacia los elementos de manera uniforme */
+    gap: 20px; /* Añade un pequeño espacio entre los elementos */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten cuando haya poco espacio */
+    align-items: flex-start; /* Alinea los elementos al principio del contenedor */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+}
+
+.top-dramas .top-lista .drama {
+    display: flex;
+    flex-direction: column; /* Alineamos los elementos verticalmente */
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px; /* Controla el ancho de cada drama */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Esto es importante para posicionar los números dentro del contenedor */
+}
+
+.top-dramas .top-lista .drama h3 {
+    font-size: 1.2rem;
+    color: #895DFF;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.top-dramas .top-lista .drama img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Esto asegura que la imagen se ajuste sin distorsionarse */
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-height: 200px; /* Limitar el tamaño máximo de la imagen */
+}
+
+/* Sistema de votación dentro del Top 3 */
+.top-dramas .top-lista .drama .votacion {
+    display: flex; /* Esto asegura que las estrellas estén en línea */
+    flex-direction: row; /* Asegura que las estrellas estén en fila horizontal */
+    gap: 5px; /* Espaciado entre las estrellas */
+}
+
+.top-dramas .top-lista .drama .votacion .estrellas {
+    font-size: 1.5rem;
+}
+
+/* Foro de discusión */
+.foro-cuadro {
+    background-color: #f1f1f1; 
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.foro-cuadro h2 {
+    color: #333;
+}
+
+.foro-cuadro p {
+    color: #666;
+}
+
+.reseña {
+    text-align: center;        /* Centra el contenido dentro del bloque */
+    margin-bottom: 20px;       /* Espacio entre cada reseña */
+}
+
+.reseña img {
+    display: block;            /* Evita el espacio extra debajo de la imagen */
+    margin: 0 auto;            /* Centra la imagen horizontalmente */
+    width: 100%;               /* Permite que la imagen se adapte al ancho del contenedor */
+    max-width: 300px;          /* Tamaño máximo uniforme para todas las imágenes */
+    height: 400px;             /* Altura fija para todas las imágenes */
+    object-fit: cover;         /* Evita que la imagen se deforme */
+    border-radius: 10px;       /* Bordes redondeados para un estilo moderno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Efecto de sombra suave */
+}
+
+.reseña h2 {
+    margin-top: 10px;          /* Espacio entre la imagen y el título */
+    font-size: 1.5rem;         /* Tamaño adecuado del título */
+}
+
+
+
+/* Estilo para los contenedores de reseña */
+.reseña-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Imagen de la reseña centrada */
+.reseña-container img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Título de la reseña */
+.reseña-container h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilos de las estrellas */
+.reseña-container .votacion {
+    justify-content: center;
+    display: flex;
+}
+
+/* Estilo de la categoría */
+.categorias {
+    padding: 20px;
+    text-align: center;
+}
+
+.categorias h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.categorias p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Estilos para el formulario de comentario */
+.formulario-opinion {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-opinion h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.formulario-opinion textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.formulario-opinion button {
+    background-color: #895DFF;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.formulario-opinion button:hover {
+    background-color: #7b4ec7;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .top-dramas .top-lista {
+        flex-direction: column;
+    }
+    
+    .top-dramas .top-lista .drama img {
+        width: 100%;
+    }
+
+    .top-dramas .top-lista .drama h3 {
+        font-size: 1rem;
+    }
+}
+
+/* Estilos para la galería */
+/* Estilo general para la galería */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .kdrama-item {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .kdrama-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .kdrama-item h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .kdrama-item a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .kdrama-item a:hover {
+    text-decoration: underline;
+  }
+  
