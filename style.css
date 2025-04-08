@@ -101,6 +101,7 @@ body {
 /* Estilo cuando el mouse pasa sobre las estrellas */
 .estrella:hover {
     color: gold;
+    cursor: pointer;
 }
 
 /* Estilo para las estrellas seleccionadas */

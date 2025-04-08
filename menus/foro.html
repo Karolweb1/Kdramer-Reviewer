@@ -52,79 +52,67 @@
         </section>
     </main>
 
-    <script>
-        // Función para obtener el Top 3 de K-dramas basados en el porcentaje de votación
-        function obtenerTopKdramas() {
-            const votos = JSON.parse(localStorage.getItem('votos')) || {}; // Obtener votos desde el localStorage
-            const kdramas = [];
 
-            // Recopilar todos los K-dramas y sus datos de votos
+    
+    <script>
+        function obtenerTopKdramas() {
+            const votos = JSON.parse(localStorage.getItem('votos')) || {}; 
+            const kdramas = [];
+    
             for (const kdrama in votos) {
                 const votosKdrama = votos[kdrama].votos || [];
+                if (votosKdrama.length === 0) continue;
+    
                 const promedioVoto = votosKdrama.reduce((acc, voto) => acc + voto, 0) / votosKdrama.length;
-                const porcentaje = Math.round((promedioVoto / 5) * 100); // Convertir promedio a porcentaje
-
-                kdramas.push({ nombre: kdrama, porcentaje: porcentaje, promedio: promedioVoto });
+                const porcentaje = Math.round((promedioVoto / 5) * 100); 
+    
+                kdramas.push({ nombre: kdrama, porcentaje });
             }
-
-            // Ordenar los K-dramas por porcentaje de mayor a menor
+    
             kdramas.sort((a, b) => b.porcentaje - a.porcentaje);
-
-            // Obtener los 3 primeros
+    
             return kdramas.slice(0, 3);
         }
-
-        // Función para mostrar el Top 3 de K-dramas en el foro
+    
         function mostrarTop3() {
             const top3 = obtenerTopKdramas();
             const top3Container = document.getElementById('top-3');
-            top3Container.innerHTML = ''; // Limpiar el contenedor antes de agregar los elementos
-
+            top3Container.innerHTML = ''; // Limpiar antes de actualizar
+    
             top3.forEach((kdrama, index) => {
-                // Generar la ruta de la imagen
-                const imagenRuta = `../imagenes/${index + 1}dorama.jpg`;
-                const enlaceReseña = `../reseñas/${index + 1}dorama.html`;
-
-                // Verificar si la imagen existe (si no existe, colocar una imagen predeterminada)
-                const img = new Image();
-                img.src = imagenRuta;
-                img.onload = function() {
-                    // Si la imagen existe, se crea el artículo con la imagen
-                    crearArticulo(kdrama, imagenRuta, enlaceReseña, index);
-                };
-                img.onerror = function() {
-                    // Si la imagen no existe, usar una imagen predeterminada
-                    const imagenPredeterminada = '../imagenes/imagen_predeterminada.jpg';
-                    crearArticulo(kdrama, imagenPredeterminada, enlaceReseña, index);
-                };
+                // Normalizar el nombre del K-drama para la imagen (minusculas, sin espacios)
+                const nombreArchivo = kdrama.nombre.replace(/\s+/g, '').toLowerCase();
+                
+                // Crear la ruta de la imagen
+                const imagenRuta = `../imagenes/${nombreArchivo}.jpg`;
+                const enlaceReseña = ../reseñas/${nombreArchivo}.html;
+    
+                // Verificar si la ruta de la imagen es correcta
+                console.log('Ruta de la imagen:', imagenRuta);
+    
+                // Crear artículo para cada K-drama
+                const dramaElement = document.createElement('article');
+                dramaElement.classList.add('drama');
+    
+                dramaElement.innerHTML = `
+                    <div class="top-rank">${index + 1}</div>
+                    <a href="${enlaceReseña}">
+                        <img src="${imagenRuta}" alt="${kdrama.nombre}" 
+                            onerror="console.log('Error al cargar la imagen:', '${imagenRuta}'); this.onerror=null; this.src='../imagenes/imagen_predeterminada.jpg';">
+                        <h3>${kdrama.nombre}</h3>
+                    </a>
+                    <span>Porcentaje: ${kdrama.porcentaje}%</span>
+                `;
+    
+                top3Container.appendChild(dramaElement);
             });
         }
-
-        // Función para crear el artículo con imagen, título y enlace
-        function crearArticulo(kdrama, imagenRuta, enlaceReseña, index) {
-            const top3Container = document.getElementById('top-3');
-
-            // Crea un artículo para cada K-drama con su imagen, porcentaje y enlace a la reseña
-            const dramaElement = document.createElement('article');
-            dramaElement.classList.add('drama');
-
-            dramaElement.innerHTML = `
-                <div class="top-rank">${index + 1}</div>
-                <a href="${enlaceReseña}">
-                    <img src="${imagenRuta}" alt="${kdrama.nombre}">
-                    <h3>${kdrama.nombre}</h3> <!-- Título del Kdrama debajo de la imagen -->
-                </a>
-                <span id="porcentaje-${kdrama.nombre}">Porcentaje: ${kdrama.porcentaje}%</span>
-            `;
-
-            top3Container.appendChild(dramaElement);
-        }
-
-        // Llamar la función para mostrar el Top 3 cuando la página cargue
-        window.onload = function () {
-            mostrarTop3(); // Muestra el Top 3 cuando se carga la página
-        };
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            mostrarTop3();
+        });
     </script>
-
+    
+    
 </body>
 </html>

@@ -8,6 +8,8 @@
 </head>
 <body class="pagina-principal">
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
     <header class="barra-navegacion">
         <nav>
             <ul class="menu">
@@ -227,30 +229,33 @@
 
 
     <script>
-        // Función para manejar el clic en las estrellas
+                // Función para manejar el clic en las estrellas
         document.querySelectorAll('.estrella').forEach(estrella => {
-            estrella.addEventListener('click', function () {
-                const kdrama = estrella.getAttribute('data-kdrama');
-                const valor = parseInt(estrella.getAttribute('data-value'));
-    
-                // Guardar el voto en localStorage
-                let votosKdrama = JSON.parse(localStorage.getItem('votos')) || {};
-    
-                if (!votosKdrama[kdrama]) {
-                    votosKdrama[kdrama] = { votos: [] }; // Arreglo para almacenar los votos
-                }
-    
-                // Registrar el voto (se guarda el valor de las estrellas)
-                votosKdrama[kdrama].votos.push(valor);
-    
-                localStorage.setItem('votos', JSON.stringify(votosKdrama));
-    
-                // Actualizar la visualización del voto
-                actualizarEstrellas(kdrama);
-                calcularPorcentaje(kdrama);
-            });
+        estrella.addEventListener('click', function () {
+            const kdrama = estrella.getAttribute('data-kdrama');
+            const valor = parseInt(estrella.getAttribute('data-value'));
+
+            // Obtener votos almacenados
+            let votosKdrama = JSON.parse(localStorage.getItem('votos')) || {};
+
+            if (!votosKdrama[kdrama]) {
+                votosKdrama[kdrama] = { votos: [] };
+            }
+
+            // Remplaza el voto solo del usuario, manteniendo los demás
+            votosKdrama[kdrama].votos = [valor]; // Cada usuario solo guarda un voto
+
+            localStorage.setItem('votos', JSON.stringify(votosKdrama));
+
+            // Actualizar la visualización y el ranking
+            actualizarEstrellas(kdrama);
+            calcularPorcentaje(kdrama);
+            mostrarTop3(); // Se actualiza el Top 3 en tiempo real
         });
+    });
+
     
+
         // Función para actualizar las estrellas según el voto almacenado
         function actualizarEstrellas(kdrama) {
             const votos = JSON.parse(localStorage.getItem('votos')) || {};
@@ -286,7 +291,7 @@
                 const porcentaje = (promedio / 5) * 100;
     
                 const porcentajeElemento = document.getElementById(`porcentaje-${kdrama}`);
-                porcentajeElemento.textContent = `Porcentaje: ${porcentaje.toFixed(2)}%`;
+                porcentajeElemento.textContent = `Porcentaje: ${porcentaje.toFixed(0)}%`;
             }
         }
     
