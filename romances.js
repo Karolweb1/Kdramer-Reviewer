@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Lista de las páginas de reseñas de los K-dramas (ruta relativa desde la página de categorías)
+    // Lista de las páginas de resenas de los K-dramas (ruta relativa desde la página de categorías)
     const kdramaPages = [
-      "../reseñas/1dorama.html",
-      "../reseñas/2dorama.html",
-      "../reseñas/3dorama.html"
+      "../resenas/1dorama.html",
+      "../resenas/2dorama.html",
+      "../resenas/3dorama.html"
     ];
   
     const galeria = document.getElementById("galeria-romances");

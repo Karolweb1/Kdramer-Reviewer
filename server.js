@@ -66,3 +66,16 @@ app.get('/porcentaje/:kdrama', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+function normalizarNombre(nombre) {
+    return nombre
+        .normalize("NFD") // elimina tildes
+        .replace(/[\u0300-\u036f]/g, "") // caracteres diacríticos
+        .replace(/[^\w\s]/gi, "") // elimina símbolos como °
+        .replace(/\s+/g, '') // elimina espacios
+        .toLowerCase();
+}
+
+const nombreArchivo = normalizarNombre(kdrama.nombre);
+
+console.log('Ruta de la imagen:', imagenRuta);

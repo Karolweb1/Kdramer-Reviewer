@@ -4,21 +4,21 @@
       "nombre": "K-drama 1",
       "imagen": "imagenes/kdrama1.jpg",
       "categoria": "romance",
-      "reseña_url": "reseñas/1dorama.html"
+      "reseña_url": "resenas/1dorama.html"
     },
     {
       "id": 2,
       "nombre": "K-drama 2",
       "imagen": "imagenes/kdrama2.jpg",
       "categoria": "romance",
-      "reseña_url": "reseñas/2dorama.html"
+      "reseña_url": "resenas/2dorama.html"
     },
     {
       "id": 3,
       "nombre": "K-drama 3",
       "imagen": "imagenes/kdrama3.jpg",
       "categoria": "romance",
-      "reseña_url": "reseñas/3dorama.html"
+      "reseña_url": "resenas/3dorama.html"
     }
   ]
   

@@ -74,29 +74,35 @@
             return kdramas.slice(0, 3);
         }
     
+        // ✅ Mapa de nombres reales de archivo
+        function obtenerNombreArchivo(kdramaNombre) {
+            const mapa = {
+                "Nos Vemos en mi 19 Vida": "nosvemosenmivida",
+                // puedes seguir agregando más excepciones aquí si las necesitas
+            };
+    
+            return mapa[kdramaNombre] || kdramaNombre.replace(/\s+/g, '').toLowerCase();
+        }
+    
         function mostrarTop3() {
             const top3 = obtenerTopKdramas();
             const top3Container = document.getElementById('top-3');
             top3Container.innerHTML = ''; // Limpiar antes de actualizar
     
             top3.forEach((kdrama, index) => {
-                // Normalizar el nombre del K-drama para la imagen (minusculas, sin espacios)
-                const nombreArchivo = kdrama.nombre.replace(/\s+/g, '').toLowerCase();
-                
-                // Crear la ruta de la imagen
-                const imagenRuta = `../imagenes/${nombreArchivo}.jpg`;
-                const enlaceReseña = ../reseñas/${nombreArchivo}.html;
+                const nombreArchivo = obtenerNombreArchivo(kdrama.nombre);
     
-                // Verificar si la ruta de la imagen es correcta
+                const imagenRuta = `../imagenes/${nombreArchivo}.jpg`;
+                const enlaceResena = `../resenas/${nombreArchivo}.html`;
+    
                 console.log('Ruta de la imagen:', imagenRuta);
     
-                // Crear artículo para cada K-drama
                 const dramaElement = document.createElement('article');
                 dramaElement.classList.add('drama');
     
                 dramaElement.innerHTML = `
                     <div class="top-rank">${index + 1}</div>
-                    <a href="${enlaceReseña}">
+                    <a href="${enlaceResena}">
                         <img src="${imagenRuta}" alt="${kdrama.nombre}" 
                             onerror="console.log('Error al cargar la imagen:', '${imagenRuta}'); this.onerror=null; this.src='../imagenes/imagen_predeterminada.jpg';">
                         <h3>${kdrama.nombre}</h3>
@@ -112,6 +118,7 @@
             mostrarTop3();
         });
     </script>
+    
     
     
 </body>
