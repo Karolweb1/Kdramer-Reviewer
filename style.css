@@ -7,8 +7,9 @@
 
 /* Fondo */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #D5EAFF !important;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #FFFFFF;
+    color: #333333;
 }
 
 /* Barra de navegación */
@@ -25,6 +26,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 10px 0;
+    gap: 15px;  /* Ajuste para tener espacio entre los elementos */
 }
 
 .menu li {
@@ -56,7 +58,7 @@ body {
 
 /* Cada drama en la página principal */
 .pagina-principal .listado-dramas .drama {
-    display: flex; 
+    display: flex;
     align-items: center;
     background: white;
     padding: 15px;
@@ -69,7 +71,7 @@ body {
 
 /* Imagen de la página principal alineada a la izquierda */
 .pagina-principal .listado-dramas .drama img {
-    width: 150px; 
+    width: 150px;
     height: auto;
     object-fit: cover;
     border-radius: 10px;
@@ -80,14 +82,15 @@ body {
 /* Sistema de votación */
 .votacion {
     display: flex;
-    justify-content: flex-start; /* Alinea las estrellas hacia la izquierda */
-    gap: 5px; /* Espaciado entre las estrellas */
+    justify-content: flex-start;
+    gap: 5px;
 }
 
 /* Estilos de las estrellas */
 .estrellas {
     display: flex;
     direction: row;
+    text-align: center;
 }
 
 .estrella {
@@ -96,6 +99,9 @@ body {
     cursor: pointer;
     transition: color 0.3s ease;
     padding: 0 5px;
+    left: 28%;
+    position: relative;
+
 }
 
 /* Estilo cuando el mouse pasa sobre las estrellas */
@@ -109,33 +115,31 @@ body {
     color: gold;
 }
 
-
 .porcentaje {
     font-weight: bold;
     color: #4a148c;
 }
 
 .top-rank {
-    font-size: 2.5rem; /* Ajuste del tamaño */
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #fff; /* Color blanco para el texto */
-    background-color: #f39c12; /* Fondo color dorado o un color llamativo */
+    color: #fff;
+    background-color: #f39c12;
     padding: 10px 15px;
-    border-radius: 50%; /* Hacerlo circular */
+    border-radius: 50%;
     display: inline-block;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    position: absolute; /* Posicionamiento absoluto dentro del contenedor */
-    top: 10px; /* Posición desde la parte superior */
-    left: 10px; /* Posición desde la parte izquierda */
-    z-index: 1; /* Asegura que el número esté encima de la imagen */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
 }
 
-/* Si quieres añadir un efecto de hover para hacer que el número sea interactivo */
 .top-rank:hover {
-    background-color: #e67e22; /* Cambiar el color de fondo al pasar el ratón */
-    transform: scale(1.1); /* Hacerlo un poco más grande */
-    cursor: pointer; /* Cambiar el cursor a puntero */
+    background-color: #e67e22;
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 /* Estilo del cuadro del Top 3 */
@@ -150,15 +154,15 @@ body {
 }
 
 .top-lista {
-    display: flex;  /* Alínea los elementos horizontalmente */
-    justify-content: space-around; /* Espacio igual entre los artículos */
-    gap: 20px;  /* Espacio entre los artículos */
-    flex-wrap: wrap;  /* Permite que los artículos se acomoden en varias filas si es necesario */
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .drama {
-    flex: 1 1 30%;  /* Los artículos ocuparán el 30% del contenedor (se ajusta al tamaño de la pantalla) */
-    max-width: 250px;  /* Máximo tamaño para cada artículo */
+    flex: 1 1 30%;
+    max-width: 250px;
     background-color: #fff;
     border-radius: 10px;
     padding: 15px;
@@ -166,33 +170,31 @@ body {
     text-align: center;
 }
 
-/* Título "TOP 3" */
 .top-dramas h2 {
     color: #895DFF;
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-/* Los tres mejores dramas dentro del Top 3 */
 .top-dramas .top-lista {
-    display: flex; /* Alinea los elementos en fila */
-    justify-content: space-between; /* Espacia los elementos de manera uniforme */
-    gap: 20px; /* Añade un pequeño espacio entre los elementos */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten cuando haya poco espacio */
-    align-items: flex-start; /* Alinea los elementos al principio del contenedor */
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .top-dramas .top-lista .drama {
     display: flex;
-    flex-direction: column; /* Alineamos los elementos verticalmente */
+    flex-direction: column;
     align-items: center;
     background-color: white;
     border-radius: 10px;
     padding: 15px;
-    width: 250px; /* Controla el ancho de cada drama */
+    width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; /* Esto es importante para posicionar los números dentro del contenedor */
+    position: relative;
 }
 
 .top-dramas .top-lista .drama h3 {
@@ -209,26 +211,15 @@ body {
 .top-dramas .top-lista .drama img {
     width: 100%;
     height: auto;
-    object-fit: contain; /* Esto asegura que la imagen se ajuste sin distorsionarse */
+    object-fit: contain;
     border-radius: 10px;
     margin-bottom: 10px;
-    max-height: 200px; /* Limitar el tamaño máximo de la imagen */
-}
-
-/* Sistema de votación dentro del Top 3 */
-.top-dramas .top-lista .drama .votacion {
-    display: flex; /* Esto asegura que las estrellas estén en línea */
-    flex-direction: row; /* Asegura que las estrellas estén en fila horizontal */
-    gap: 5px; /* Espaciado entre las estrellas */
-}
-
-.top-dramas .top-lista .drama .votacion .estrellas {
-    font-size: 1.5rem;
+    max-height: 200px;
 }
 
 /* Foro de discusión */
 .foro-cuadro {
-    background-color: #f1f1f1; 
+    background-color: #f1f1f1;
     padding: 20px;
     margin: 20px auto;
     max-width: 900px;
@@ -246,27 +237,25 @@ body {
 }
 
 .reseña {
-    text-align: center;        /* Centra el contenido dentro del bloque */
-    margin-bottom: 20px;       /* Espacio entre cada reseña */
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .reseña img {
-    display: block;            /* Evita el espacio extra debajo de la imagen */
-    margin: 0 auto;            /* Centra la imagen horizontalmente */
-    width: 100%;               /* Permite que la imagen se adapte al ancho del contenedor */
-    max-width: 300px;          /* Tamaño máximo uniforme para todas las imágenes */
-    height: 400px;             /* Altura fija para todas las imágenes */
-    object-fit: cover;         /* Evita que la imagen se deforme */
-    border-radius: 10px;       /* Bordes redondeados para un estilo moderno */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Efecto de sombra suave */
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .reseña h2 {
-    margin-top: 10px;          /* Espacio entre la imagen y el título */
-    font-size: 1.5rem;         /* Tamaño adecuado del título */
+    margin-top: 10px;
+    font-size: 1.5rem;
 }
-
-
 
 /* Estilo para los contenedores de reseña */
 .reseña-container {
@@ -355,11 +344,11 @@ body {
 }
 
 /* Responsivo */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .top-dramas .top-lista {
         flex-direction: column;
     }
-    
+
     .top-dramas .top-lista .drama img {
         width: 100%;
     }
@@ -369,40 +358,128 @@ body {
     }
 }
 
-/* Estilos para la galería */
-/* Estilo general para la galería */
-.galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .kdrama-item {
-    text-align: center;
-    border: 1px solid #ddd;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  .kdrama-item img {
+@media (max-width: 768px) {
+    .menu {
+        flex-wrap: nowrap;  /* Evita que los elementos se apilen */
+        gap: 5px;  /* Menos espacio entre los elementos */
+        padding: 10px;
+        justify-content: flex-start;  /* Alinea los elementos hacia la izquierda */
+    }
+
+    .menu li {
+        margin: 0 10px;  /* Reducir el margen entre los elementos */
+    }
+
+    .menu a {
+        font-size: 1rem;  /* Ajuste del tamaño de fuente */
+    }
+    
+    .pagina-principal .listado-dramas {
+        padding: 10px;
+    }
+
+    .pagina-principal .listado-dramas .drama {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .pagina-principal .listado-dramas .drama img {
+        margin-bottom: 15px;
+    }
+
+    .top-dramas .top-lista {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .top-dramas .top-lista .drama {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .formulario-opinion button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* Ajustes para el tamaño del texto en pantallas pequeñas */
+    body {
+        font-size: 14px;
+    }
+
+    .top-dramas h2 {
+        font-size: 1.5rem;
+    }
+
+    .resepña-container h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu li {
+        margin: 5px 0;
+    }
+
+    .formulario-opinion textarea {
+        height: 80px;
+    }
+
+    .top-dramas .top-lista .drama h3 {
+        font-size:
+    }
+
+    .top-dramas .card-img-top {
+        height: 180px;
+        object-fit: cover;
+    }
+        
+    .top-dramas .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+        }
+        
+    .top-dramas .card-text {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        }
+        
+    .foro-discusion textarea,
+    .foro-recomendaciones textarea {
+        font-size: 0.9rem;
+        }
+        
+    .foro-discusion button,
+    .foro-recomendaciones button {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+        }
+        
+    @media (max-width: 576px) {
+    .top-dramas h2,
+    .foro-discusion h2,
+    .foro-recomendaciones h2 {
+        font-size: 1.3rem;
+        }
+/* Ajustar imágenes de las tarjetas del Top 3 */
+.card-img-top {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .kdrama-item h3 {
-    font-size: 1.2em;
-    margin: 10px 0;
-  }
-  
-  .kdrama-item a {
-    color: #007BFF;
-    text-decoration: none;
-  }
-  
-  .kdrama-item a:hover {
-    text-decoration: underline;
-  }
-  
+    height: 250px; /* Puedes cambiar a 200px o 220px si prefieres */
+    object-fit: cover;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.container {
+    max-width: 1400px; /* En lugar del valor por defecto */
+}
+
+
+    }
