@@ -57,7 +57,30 @@
             </div>
         </div>
     </section>
-    
+
+    <section class="resena-formulario container mt-4">
+        <h3>Agrega tu Reseña</h3>
+            <form id="form-resena" class="formulario-resena">
+                <input type="text" id="nombreUsuario" placeholder="Tu nombre" required />
+                <select id="seleccionKdrama" required>
+                    <option value="">Selecciona un K-drama</option>
+                </select>
+                <div class="estrellas">
+                    <label>Tu calificación:</label>
+                    <div id="estrellasInput">
+                    <!-- JS insertará estrellas aquí -->
+                    </div>
+                </div>
+                <textarea id="textoResena" placeholder="Escribe tu opinión aquí..." required></textarea>
+                <button type="submit">Enviar Reseña</button>
+            </form>
+    </section>
+            
+            <!-- Sección de reseñas random -->
+        <section class="resenas-random container mt-5">
+            <h3>Reseñas Destacadas del Top 3</h3>
+            <div id="contenedor-resenas"></div>
+        </section>
 
 
     

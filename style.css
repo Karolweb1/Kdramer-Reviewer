@@ -419,10 +419,11 @@ body {
 }
 
 @media (max-width: 480px) {
-    .menu {
-        flex-direction: column;
-        gap: 10px;
-    }
+.menu {
+flex-direction: column;
+gap: 10px;
+}
+}
 
     .menu li {
         margin: 5px 0;
@@ -466,8 +467,9 @@ body {
     .top-dramas h2,
     .foro-discusion h2,
     .foro-recomendaciones h2 {
-        font-size: 1.3rem;
-        }
+    font-size: 1.3rem;
+    }
+}
 /* Ajustar imágenes de las tarjetas del Top 3 */
 .card-img-top {
     height: 200px;           /* Limita la altura de la imagen */
@@ -476,10 +478,124 @@ body {
     border-radius: 0.5rem 0.5rem 0 0; /* Opcional: bordes redondeados arriba */
 }
 
-
-
 .container {
     max-width: 1200px; /* O el valor que prefieras */
 }
 
-    }
+#top-3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+#top-3 .drama {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+}
+
+#top-3 .drama img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#top-3 .drama h3 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+}
+
+#top-3 .drama span {
+    font-size: 1rem;
+    color: #555;
+}
+
+.top-rank {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #dc3545;
+    color: white;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+}
+
+.resena-formulario,
+.resenas-random {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formulario-resena {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formulario-resena input,
+.formulario-resena select,
+.formulario-resena textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.formulario-resena button {
+  padding: 10px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.formulario-resena button:hover {
+  background: #c82333;
+}
+
+.estrellas input[type="radio"] {
+  display: none;
+}
+
+#estrellasInput span {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ccc;
+}
+
+#estrellasInput span.seleccionada {
+  color: gold;
+}
+
+.resena {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: white;
+}
+
+.resena h4 {
+  margin: 0 0 5px;
+}
+
+.resena .estrellas {
+  color: gold;
+  font-size: 1.2rem;
+}

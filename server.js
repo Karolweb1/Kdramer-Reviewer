@@ -79,3 +79,11 @@ function normalizarNombre(nombre) {
 const nombreArchivo = normalizarNombre(kdrama.nombre);
 
 console.log('Ruta de la imagen:', imagenRuta);
+
+function obtenerTopKdramas() {
+    return [
+        { nombre: "Drama 1", porcentaje: 95 },
+        { nombre: "Drama 2", porcentaje: 93 },
+        { nombre: "Drama 3", porcentaje: 91 }
+    ];
+}

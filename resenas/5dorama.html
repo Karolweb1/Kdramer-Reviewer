@@ -26,7 +26,7 @@
 
     <!-- Cuadro con imagen, nombre y votación -->
     <div class="reseña">
-        <img src="../imagenes/nosvemosenmivida" alt="Nos Vemos en mi 19 Vida">
+        <img src="../imagenes/nosvemosenmivida.jpg" alt="Nos Vemos en mi 19 Vida">
         <h2>Nos Vemos en mi 19 Vida</h2>
         <div class="estrellas">
             <span class="estrella" data-value="1" data-kdrama="Nos Vemos en mi 19 Vida">&#9733;</span>
@@ -35,6 +35,7 @@
             <span class="estrella" data-value="4" data-kdrama="Nos Vemos en mi 19 Vida">&#9733;</span>
             <span class="estrella" data-value="5" data-kdrama="Nos Vemos en mi 19 Vida">&#9733;</span>
         </div>
+
         <div class="clasificacion">
             <p>Categoría: <a href="../menus/categorias/romance.html">Romance</a></p>
         </div>
@@ -62,11 +63,6 @@
     </div>
     
 
-    <!-- Categoría -->
-    <div class="categorias">
-        <h2>Categoría: Romance, Viajes en el Tiempo</h2>
-        <p>Este Kdrama pertenece a las categorías: <strong>Romance</strong>, <strong>Viajes en el Tiempo</strong></p>
-    </div>
 
     <!-- Sección de comentarios -->
     <div class="opiniones">
@@ -107,61 +103,70 @@
     </div>
         
 
-<script>
-    window.onload = function () {
-        const kdrama = "Nos Vemos en mi 19 Vida";  // El nombre del Kdrama de esta página
-        const voto = JSON.parse(localStorage.getItem('votos')) || {};
-
-        // Actualizar las estrellas según el voto
-        const estrellas = document.querySelectorAll(`.estrella[data-kdrama="${kdrama}"]`);
-        if (voto[kdrama]) {
-            estrellas.forEach(estrella => {
-                if (parseInt(estrella.getAttribute('data-value')) <= voto[kdrama]) {
-                    estrella.style.color = 'gold';  // Cambia el color a dorado para indicar que está seleccionado
-                } else {
-                    estrella.style.color = '';  // Restaura el color a su valor original
-                }
+    <script>
+        function obtenerTopKdramas() {
+            const votos = JSON.parse(localStorage.getItem('votos')) || {}; 
+            const kdramas = [];
+    
+            for (const kdrama in votos) {
+                const votosKdrama = votos[kdrama].votos || [];
+                if (votosKdrama.length === 0) continue;
+    
+                const promedioVoto = votosKdrama.reduce((acc, voto) => acc + voto, 0) / votosKdrama.length;
+                const porcentaje = Math.round((promedioVoto / 5) * 100); 
+    
+                kdramas.push({ nombre: kdrama, porcentaje });
+            }
+    
+            kdramas.sort((a, b) => b.porcentaje - a.porcentaje);
+    
+            return kdramas.slice(0, 3);
+        }
+    
+        // ✅ Mapa de nombres reales de archivo
+        function obtenerNombreArchivo(kdramaNombre) {
+            const mapa = {
+                "Nos Vemos en mi 19 Vida": "nosvemosenmivida",
+                // puedes seguir agregando más excepciones aquí si las necesitas
+            };
+    
+            return mapa[kdramaNombre] || kdramaNombre.replace(/\s+/g, '').toLowerCase();
+        }
+    
+        function mostrarTop3() {
+            const top3 = obtenerTopKdramas();
+            const top3Container = document.getElementById('top-3');
+            top3Container.innerHTML = ''; // Limpiar antes de actualizar
+    
+            top3.forEach((kdrama, index) => {
+                const nombreArchivo = obtenerNombreArchivo(kdrama.nombre);
+    
+                const imagenRuta = `../imagenes/${nombreArchivo}.jpg`;
+                const enlaceResena = `../resenas/${nombreArchivo}.html`;
+    
+                console.log('Ruta de la imagen:', imagenRuta);
+    
+                const dramaElement = document.createElement('article');
+                dramaElement.classList.add('drama');
+    
+                dramaElement.innerHTML = `
+                    <div class="top-rank">${index + 1}</div>
+                    <a href="${enlaceResena}">
+                        <img src="${imagenRuta}" alt="${kdrama.nombre}" 
+                            onerror="console.log('Error al cargar la imagen:', '${imagenRuta}'); this.onerror=null; this.src='../imagenes/imagen_predeterminada.jpg';">
+                        <h3>${kdrama.nombre}</h3>
+                    </a>
+                    <span>Porcentaje: ${kdrama.porcentaje}%</span>
+                `;
+    
+                top3Container.appendChild(dramaElement);
             });
         }
-
-        // Mostrar el porcentaje del voto
-        calcularPorcentaje(kdrama);
-    }
-
-    // Calcular el porcentaje de votos
-    function calcularPorcentaje(kdrama) {
-        const votosKdrama = JSON.parse(localStorage.getItem('votos')) || {};
-        const totalVotos = Object.values(votosKdrama).length;
-        const votosPositivos = Object.values(votosKdrama).filter(v => v === kdrama).length;
-        const porcentaje = (votosPositivos / totalVotos) * 100;
-
-        const porcentajeElemento = document.getElementById(`porcentaje-${kdrama}`);
-        porcentajeElemento.textContent = `Porcentaje: ${Math.round(porcentaje)}%`;
-    }
-    // Este código va en todas las páginas donde haya votos
-document.querySelectorAll('.estrella').forEach(estrella => {
-    estrella.addEventListener('click', function () {
-        const kdrama = estrella.getAttribute('data-kdrama');
-        const valor = parseInt(estrella.getAttribute('data-value'));
-
-        let votosKdrama = JSON.parse(localStorage.getItem('votos')) || {};
-        if (!votosKdrama[kdrama]) {
-            votosKdrama[kdrama] = { votos: [] };
-        }
-
-        votosKdrama[kdrama].votos.push(valor);
-        localStorage.setItem('votos', JSON.stringify(votosKdrama));
-
-        actualizarEstrellas(kdrama);
-        calcularPorcentaje(kdrama);
-        actualizarTop3();
-    });
-});
-
-</script>
-
-        
     
+        document.addEventListener("DOMContentLoaded", () => {
+            mostrarTop3();
+        });
+    </script>
 
 </body>
 </html>
