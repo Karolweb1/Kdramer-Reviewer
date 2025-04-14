@@ -87,9 +87,12 @@ body {
     margin-top: 12px;
     text-align: left;
 }
+
 .votacion h3 {
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: bold;
 }
 
 /* Estilos de las estrellas */
@@ -110,8 +113,8 @@ body {
 .estrellas-con-porcentaje {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
+    margin-top: 12px;
 }
 
 .estrella {
@@ -137,8 +140,10 @@ body {
 }
 
 .porcentaje {
+    font-size: 16px;
+    color: #333;
     font-weight: bold;
-    color: #4a148c;
+    margin-left: 8px;
 }
 
 .top-rank {
@@ -209,16 +214,46 @@ body {
     height: auto;
     display: block;
     border-bottom: 1px solid #eee;
-}
+    max-height: 300px; /* Ajuste para que no se estiren */
+    object-fit: cover; /* Mantiene la proporción sin distorsionar */
+    }
 
 .drama .info {
-    padding: 16px;
-    text-align: center; /* 👈 centra el texto y el botón */
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.drama h2 {
+    font-size: 1.4rem; /* Aumentar el tamaño de los títulos */
+    color: #222;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.drama p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.boton {
+    display: inline-block;
+    margin: 5px auto;
+    text-align: center;
+    background-color: #ff6b81;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    width: fit-content;
 }
 
 .drama .boton {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: -5px;
     background-color: #ff6b81;
     color: #fff;
     padding: 8px 14px;
@@ -226,6 +261,10 @@ body {
     text-decoration: none;
     font-weight: bold;
     transition: background 0.3s ease;
+}
+
+.boton:hover {
+    background-color: #ff4a5b;
 }
 
 .drama .boton:hover {
