@@ -84,13 +84,34 @@ body {
     display: flex;
     justify-content: flex-start;
     gap: 5px;
+    margin-top: 12px;
+    text-align: left;
+}
+.votacion h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
 }
 
 /* Estilos de las estrellas */
 .estrellas {
+    display: inline-flex;
+    font-size: 20px;
+    color: #ccc;
+    cursor: pointer;
+    gap: 2px;
+    vertical-align: middle;
+}
+
+.estrella:hover,
+.estrella.seleccionada {
+    color: gold;
+}
+
+.estrellas-con-porcentaje {
     display: flex;
-    direction: row;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .estrella {
@@ -160,14 +181,55 @@ body {
     flex-wrap: wrap;
 }
 
+/* === GRID EN LISTADO DE DRAMAS - INDEX === */
+.listado-dramas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    padding: 20px;
+}
+
 .drama {
-    flex: 1 1 30%;
-    max-width: 250px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.drama:hover {
+    transform: translateY(-5px);
+}
+
+.drama img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.drama .info {
+    padding: 16px;
+    text-align: center; /* 👈 centra el texto y el botón */
+}
+
+.drama .boton {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #ff6b81;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.drama .boton:hover {
+    background-color: #e55b6e;
 }
 
 .top-dramas h2 {
@@ -434,7 +496,7 @@ gap: 10px;
     }
 
     .top-dramas .top-lista .drama h3 {
-        font-size:
+        font-size: larger;
     }
 
     .top-dramas .card-img-top {
@@ -519,8 +581,8 @@ gap: 10px;
 
 .top-rank {
     position: absolute;
-    top: -10px;
-    left: -10px;
+    top: 1px;
+    left: 1px;
     background: #dc3545;
     color: white;
     font-weight: bold;
