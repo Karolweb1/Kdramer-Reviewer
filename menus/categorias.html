@@ -5,80 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/categorias.css">
     <title>Categorías de Kdramas</title>
 </head>
-<body>
+<body class="pagina-principal">
+        <header class="barra-navegacion">
+            <nav>
+                <ul class="menu">
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../menus/foro.html">Foro</a></li>
+                    <li><a href="../menus/categorias.html">Categorías</a></li>
+                    <li><a href="../menus/plataformas.html">Plataformas</a></li>
+                    <li><a href="../menus/series.html">Series</a></li>
+                    <li><a href="../menus/cuenta.html">Cuenta</a></li>
+                </ul>
+            </nav>
+            <h1 class="titulo">KDRAMER REVIEWER</h1>
+        </header>
 
-    <!-- Menú de navegación -->
-    <header class="barra-navegacion">
-        <nav>
-            <ul class="menu">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../menus/foro.html">Foro</a></li>
-                <li><a href="../menus/categorias.html">Categorías</a></li>
-                <li><a href="../menus/plataformas.html">Plataformas</a></li>
-                <li><a href="../menus/series.html">Series</a></li>
-                <li><a href="../menus/cuenta.html">Cuenta</a></li>
-            </ul>
-            <script>
-                // Resaltar enlace activo en el menú
-                document.querySelectorAll('.menu a').forEach(link => {
-                    if(link.href === window.location.href) {
-                        link.classList.add('active');
-                    }
-                });
-            </script>
-        </nav>
-        <h1 class="subtitulo">Categorías de Kdramas</h1>
-    </header>
+    <main class="container py-4">
+        <section class="categorias">
+            <h2 class="text-center mb-5">Explora Kdramas por Categoría</h2>
+            
+            <!-- Filtros de categorías (ahora dinámicos) -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex flex-wrap gap-3 justify-content-center" id="filtros-categorias">
+                        <button class="btn btn-categoria active" data-categoria="todas">Todas</button>
+                        <!-- Las categorías se insertarán automáticamente con JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Resultados -->
+            <div class="row">
+                <div class="col-12">
+                    <h3 id="titulo-categoria-seleccionada" class="mb-4">Todos los K-Dramas</h3>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="contenedor-doramas">
+                        <!-- Los doramas se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- Sección de Categorías -->
-    <div class="categorias">
-        <h2>Explora Kdramas por Categoría</h2>
-        
-        <div class="categoria-lista">
-
-            <div class="categoria-card">
-                <!-- Enlace a la categoría de Romance -->
-                <a href="../menus/categorias/romance.html">
-                <!--    <img src="romance.html" alt="Romance"> -->
-                    <h3>Romance</h3>
-                </a>
-            </div>
-
-            <div class="categoria-card">
-                <a href="viajes-en-el-tiempo.html">
-                <!--    <img src="romance.html" alt="Romance"> -->
-                <h3>Viajes en el Tiempo</h3>
-                </a>
-            </div>
-
-            <div class="categoria-card">
-                <a href="fantasia.html">
-                <!--    <img src="romance.html" alt="Romance"> -->
-                <h3>Fantasía</h3>
-                </a>
-            </div>
-            <div class="categoria-card">
-                <a href="misterio.html">
-                <!--    <img src="romance.html" alt="Romance"> -->
-                <h3>Misterio</h3>
-                </a>
-            </div>
-            <div class="categoria-card">
-                <a href="drama.html">
-                <!--    <img src="romance.html" alt="Romance"> -->
-                <h3>Drama</h3>
-                </a>
-            </div>
-            <div class="categoria-card">
-                <a href="comedia.html">
-                <!--    <img src="romance.html" alt="Romance"> -->
-                <h3>Comedia</h3>
-                </a>
-            </div>
-        </div>
-    </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/categorias.js"></script>
 </body>
 </html>

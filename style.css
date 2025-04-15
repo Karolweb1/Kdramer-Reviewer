@@ -456,7 +456,7 @@ header {
 /* CATEGORÍAS */
 /* ------------------------- */
 .categorias {
-    padding: 20px;
+    padding: 2rem 0;
     text-align: center;
 }
 
@@ -514,6 +514,59 @@ header {
     border-radius: 10px !important;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
     overflow: hidden;
+}
+
+/* Estilos para la página de categorías */
+.btn-categoria {
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid #895DFF;
+    background-color: white;
+    color: #895DFF;
+}
+
+.btn-categoria:hover,
+.btn-categoria.active {
+    background-color: #895DFF;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#titulo-categoria-seleccionada {
+    color: #895DFF;
+    font-weight: 700;
+    border-bottom: 2px solid #895DFF;
+    padding-bottom: 0.5rem;
+}
+
+.card-dorama {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.card-dorama:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.card-dorama-img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.badge-categoria {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
 }
 
 .text-warning {
@@ -724,6 +777,15 @@ header {
     
     .dorama-sinopsis {
         padding: 15px;
+    }
+
+    .btn-categoria {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .card-dorama-img {
+        height: 200px;
     }
 }
 
