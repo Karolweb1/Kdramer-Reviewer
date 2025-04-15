@@ -1,104 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/dorama.css">
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Kdramer Reviewer</title> 
+    <title>Veinticinco Veintiuno - Reseña | KDRAMER REVIEWER</title>
 </head>
 
 <body class="pagina-principal">
-
+    <!-- Barra de navegación -->
     <header class="barra-navegacion">
         <nav>
             <ul class="menu">
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../menus/foro.html">Foro</a></li>
-                <li><a href="../menus/categorias.html">Categorías</a></li>
+                <li><a href="../menus/categorias">Categorías</a></li>
                 <li><a href="../menus/plataformas.html">Plataformas</a></li>
                 <li><a href="../menus/series.html">Series</a></li>
                 <li><a href="../menus/cuenta.html">Cuenta</a></li>
             </ul>
-            <script>
-                // Resaltar enlace activo en el menú
-                document.querySelectorAll('.menu a').forEach(link => {
-                    if(link.href === window.location.href) {
-                        link.classList.add('active');
-                    }
-                });
-            </script>
         </nav>
-        
-        <h1 class="subtitulo">Itaewon class</h1>
+        <h1 class="titulo">KDRAMER REVIEWER</h1>
     </header>
 
-    <!-- Cuadro con imagen, nombre y votación -->
-    <div class="reseña">
-        <img src="../imagenes/Itaewonclass.jpg" alt="Itaewon class">
-        <h2>Itaewon class</h2>
-        <div class="estrellas">
-            <span class="estrella" data-value="1" data-kdrama="Itaewon class">&#9733;</span>
-            <span class="estrella" data-value="2" data-kdrama="Itaewon class">&#9733;</span>
-            <span class="estrella" data-value="3" data-kdrama="Itaewon class">&#9733;</span>
-            <span class="estrella" data-value="4" data-kdrama="Itaewon class">&#9733;</span>
-            <span class="estrella" data-value="5" data-kdrama="Itaewon class">&#9733;</span>
-        </div>
-        <div class="clasificacion">
-            <p>Categoría: <a href="../menus/categorias/romance.html">Romance</a></p>
-        </div>
-    </div>
+    <!-- Contenido principal -->
+    <main class="container mt-4">
+        <div class="row">
+            <!-- Columna izquierda: Portada y votación -->
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <img src="../imagenes/Itaewonclass.jpg" class="card-img-top img-fluid" alt="ITAEWON CLASS">
+                    <div class="card-body text-center">
+                        <!-- Sistema de votación (DEBE SER IGUAL) -->
+                        <div class="votacion mt-3">
 
-            <!-- Información detallada -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Columna derecha: Información detallada -->
             <div class="col-lg-8">
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-body">
-                        <h1 class="card-title mb-3">Itaewon class</h1>
+                        <h1 class="card-title mb-3">ITAEWON CLASS</h1>
                         
+                        <!-- Metadata (Año, episodios, etc.) -->
                         <div class="row g-3 mb-4">
                             <div class="col-md-6 col-lg-3">
                                 <div class="p-3 bg-light rounded">
                                     <h6 class="text-muted mb-2">Año</h6>
-                                    <p class="mb-0">2022</p>
+                                    <p class="mb-0">[AÑO]</p>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="p-3 bg-light rounded">
-                                    <h6 class="text-muted mb-2">Episodios</h6>
-                                    <p class="mb-0">16</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="p-3 bg-light rounded">
-                                    <h6 class="text-muted mb-2">Duración</h6>
-                                    <p class="mb-0">70 min</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="p-3 bg-light rounded">
-                                    <h6 class="text-muted mb-2">Plataforma</h6>
-                                    <p class="mb-0">Netflix</p>
-                                </div>
-                            </div>
+                            <!-- Repetir para Episodios, Duración, Plataforma -->
                         </div>
                         
+                        <!-- Badges de categorías -->
                         <div class="mb-4">
-                            <span class="badge bg-primary me-1">Romance</span>
-                            <span class="badge bg-danger me-1">Fantasía</span>
-                            <span class="badge bg-success me-1">Drama</span>
+                            <span class="badge bg-primary me-1">[GÉNERO 1]</span>
+                            <span class="badge bg-danger me-1">[GÉNERO 2]</span>
+                            <!-- Añadir más si es necesario -->
+                        </div>
+                        
+                        <!-- Sección de sinopsis (aquí va tu reseña) -->
+                        <div class="sinopsis mb-4">
+                            <h4 class="mb-3">Sinopsis</h4>
+                            <p>Un conmovedor drama romántico que sigue la historia de dos almas destinadas a encontrarse a través del tiempo. Cuando una joven escritora descubre que puede comunicarse con el pasado a través de un misterioso reloj antiguo, su vida se entrelaza con la de un pintor de los años 50 en una emotiva historia sobre el amor, el destino y las segundas oportunidades.</p>
                         </div>
 
-    <!-- Reseña del Kdrama -->
-    <div class="reseña">
-        <p>        
-            "Itaewon class" es una serie surcoreana de 2023 que fusiona romance y viajes en el tiempo, disponible en Netflix. La trama sigue a Han Jun-hee, quien, tras la trágica pérdida de su novio, experimenta un viaje temporal que la transporta a 1998. Allí, se encuentra con Nam Si-heon, un joven sorprendentemente similar a su difunto amor. Esta premisa da pie a una historia que explora temas de amor, destino y segundas oportunidades.
-    
-            La serie destaca por su atmósfera nostálgica y emotiva, evocando sentimientos profundos en los espectadores. La actuación de Jeon Yeo-been, quien interpreta tanto a Jun-hee como a Min-ju, es especialmente notable, mostrando una versatilidad que enriquece la narrativa. Ahn Hyo-seop, en los roles de Gu Yeon-jun y Nam Si-heon, aporta una presencia carismática que complementa perfectamente la dinámica romántica de la serie.
-        
-            Aunque la trama puede resultar compleja debido a los elementos de viaje en el tiempo, "Itaewon class" mantiene al espectador cautivado con sus giros inesperados y desarrollo de personajes. Es una serie que combina romance, misterio y una dosis de nostalgia, ofreciendo una experiencia visual y emocionalmente enriquecedora.
-        
-            En resumen, "Itaewon class" es una serie que, a través de su narrativa envolvente y actuaciones destacadas, ofrece una experiencia única para los amantes del drama romántico y la fantasía. Disponible en Netflix, es una opción recomendada para quienes buscan una historia que toque el corazón y desafíe las percepciones del tiempo y el amor.</p>
-    </div>
+
+
+
 
                         <!-- Formulario para nueva reseña -->
                         

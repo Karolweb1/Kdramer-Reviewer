@@ -509,6 +509,13 @@ header {
     margin-bottom: 20px;
 }
 
+.card.border-0.shadow-sm {
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    overflow: hidden;
+}
+
 .text-warning {
     color: gold;
     font-size: 1.3rem;
@@ -517,6 +524,62 @@ header {
 
 .text-muted {
     font-size: 0.85rem;
+}
+
+.pagina-dorama {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.dorama-header {
+    margin-bottom: 30px;
+}
+
+.dorama-portada {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.dorama-info-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.dorama-titulo {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.dorama-metadata {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.dorama-sinopsis {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.dorama-sinopsis h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.dorama-sinopsis p {
+    color: #555;
+    line-height: 1.7;
+    text-align: justify;
 }
 
 .dorama-img {
@@ -653,6 +716,14 @@ header {
         
     .card-img-top {
         height: 350px;
+    }
+
+    .dorama-titulo {
+        font-size: 1.5rem;
+    }
+    
+    .dorama-sinopsis {
+        padding: 15px;
     }
 }
 
