@@ -20,6 +20,14 @@
                 <li><a href="../menus/series.html">Series</a></li>
                 <li><a href="../menus/cuenta.html">Cuenta</a></li>
             </ul>
+            <script>
+                // Resaltar enlace activo en el menú
+                document.querySelectorAll('.menu a').forEach(link => {
+                    if(link.href === window.location.href) {
+                        link.classList.add('active');
+                    }
+                });
+            </script>
         </nav>
         <h1 class="subtitulo">Nos Vemos en mi 19 Vida</h1>
     </header>

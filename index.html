@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Kdramer Reviewer</title>
 </head>
+
+
 <body class="pagina-principal">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-
     <header class="barra-navegacion">
-
-        
         <nav>
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
@@ -23,7 +21,16 @@
                 <li><a href="menus/series.html">Series</a></li>
                 <li><a href="menus/cuenta.html">Cuenta</a></li>
             </ul>
+            <script>
+                // Resaltar enlace activo en el menú
+                document.querySelectorAll('.menu a').forEach(link => {
+                    if(link.href === window.location.href) {
+                        link.classList.add('active');
+                    }
+                });
+            </script>
         </nav>
+        
 
 
         <h1 class="titulo">KDRAMER REVIEWER</h1>
@@ -48,7 +55,12 @@
                         <span class="estrella" data-value="3" data-kdrama="tuTiempoLlama">&#9733;</span>
                         <span class="estrella" data-value="4" data-kdrama="tuTiempoLlama">&#9733;</span>
                         <span class="estrella" data-value="5" data-kdrama="tuTiempoLlama">&#9733;</span>
-                    <div id="porcentaje-tuTiempoLlama">Porcentaje: 0%</div> </div>
+                    </div>
+                    <div class="porcentajes-kdrama" id="porcentaje-tuTiempoLlama">Porcentaje: 0%</div>
+                    <div class="mt-2">
+                        <span class="badge bg-primary me-1">Romance</span>
+                        <span class="badge bg-danger">Fantasía</span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -64,6 +76,7 @@
                 <h2>Veinticinco Veintiuno</h2>
                 <p>Un drama romantico sobre el destino y el amor a través del tiempo.</p>
                 <a href="resenas/2dorama.html" class="boton">Ver mas</a>
+                
                 <div class="votacion">
                     <h3>Vota este Kdrama:</h3>
                     <div class="estrellas">
@@ -73,7 +86,11 @@
                         <span class="estrella" data-value="4" data-kdrama="VeinticincoVeintiuno">&#9733;</span>
                         <span class="estrella" data-value="5" data-kdrama="VeinticincoVeintiuno">&#9733;</span>
                     </div>
-                    <div id="porcentaje-VeinticincoVeintiuno">Porcentaje: 0%</div>
+                    <div class="porcentajes-kdrama" id="porcentaje-VeinticincoVeintiuno">Porcentaje: 0%</div>
+                    <div class="mt-2">
+                        <span class="badge bg-primary me-1">Romance</span>
+                        <span class="badge bg-danger">Fantasía</span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -98,7 +115,11 @@
                         <span class="estrella" data-value="4" data-kdrama="lareinadelaslagrimas">&#9733;</span>
                         <span class="estrella" data-value="5" data-kdrama="lareinadelaslagrimas">&#9733;</span>
                     </div>
-                    <div id="porcentaje-lareinadelaslagrimas">Porcentaje: 0%</div>
+                    <div  class="porcentajes-kdrama" id="porcentaje-lareinadelaslagrimas">Porcentaje: 0%</div>
+                    <div class="mt-2">
+                        <span class="badge bg-primary me-1">Romance</span>
+                        <span class="badge bg-danger">Fantasía</span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -123,7 +144,11 @@
                             <span class="estrella" data-value="4" data-kdrama="Abogada Woo">&#9733;</span>
                             <span class="estrella" data-value="5" data-kdrama="Abogada Woo">&#9733;</span>
                         </div>
-                        <div id="porcentaje-Abogada Woo">Porcentaje: 0%</div>
+                        <div  class="porcentajes-kdrama" id="porcentaje-Abogada Woo">Porcentaje: 0%</div>
+                        <div class="mt-2">
+                            <span class="badge bg-primary me-1">Romance</span>
+                            <span class="badge bg-danger">Fantasía</span>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -148,7 +173,11 @@
                             <span class="estrella" data-value="4" data-kdrama="Nos Vemos en mi 19 Vida">&#9733;</span>
                             <span class="estrella" data-value="5" data-kdrama="Nos Vemos en mi 19 Vida">&#9733;</span>
                         </div>
-                        <div id="porcentaje-Nos Vemos en mi 19 Vida">Porcentaje: 0%</div>
+                        <div  class="porcentajes-kdrama" id="porcentaje-Nos Vemos en mi 19 Vida">Porcentaje: 0%</div>
+                        <div class="mt-2">
+                            <span class="badge bg-primary me-1">Romance</span>
+                            <span class="badge bg-danger">Fantasía</span>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -173,7 +202,11 @@
                         <span class="estrella" data-value="4" data-kdrama="La Buena Mala Madre">&#9733;</span>
                         <span class="estrella" data-value="5" data-kdrama="La Buena Mala Madre">&#9733;</span>
                     </div>
-                    <div id="porcentaje-La Buena Mala Madre">Porcentaje: 0%</div>
+                    <div  class="porcentajes-kdrama" id="porcentaje-La Buena Mala Madre">Porcentaje: 0%</div>
+                    <div class="mt-2">
+                        <span class="badge bg-primary me-1">Romance</span>
+                        <span class="badge bg-danger">Fantasía</span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -198,7 +231,11 @@
                         <span class="estrella" data-value="4" data-kdrama="Kings The Land">&#9733;</span>
                         <span class="estrella" data-value="5" data-kdrama="Kings The Land">&#9733;</span>
                     </div>
-                    <div id="porcentaje-Kings The Land">Porcentaje: 0%</div>
+                    <div  class="porcentajes-kdrama" id="porcentaje-Kings The Land">Porcentaje: 0%</div>
+                    <div class="mt-2">
+                        <span class="badge bg-primary me-1">Romance</span>
+                        <span class="badge bg-danger">Fantasía</span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -223,7 +260,11 @@
                         <span class="estrella" data-value="4" data-kdrama="Itaewon class">&#9733;</span>
                         <span class="estrella" data-value="5" data-kdrama="Itaewon class">&#9733;</span>
                     </div>
-                    <div id="porcentaje-Itaewon class">Porcentaje: 0%</div>
+                    <div  class="porcentajes-kdrama" id="porcentaje-Itaewon class">Porcentaje: 0%</div>
+                    <div class="mt-2">
+                        <span class="badge bg-primary me-1">Romance</span>
+                        <span class="badge bg-danger">Fantasía</span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -308,6 +349,53 @@
                 calcularPorcentaje(kdrama);
             }
         };
+    </script>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="dramaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="" class="img-fluid rounded mb-3" id="modalImage" style="max-height: 70vh;">
+                    <p id="modalDesc"></p>
+                    <div class="mt-3" id="modalRating"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="#" class="btn btn-primary" id="modalLink">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle con Popper (SOLO UNA VEZ) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Función para el modal
+        document.querySelectorAll('.drama > a').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                const dramaCard = this.closest('.drama');
+                const modal = new bootstrap.Modal(document.getElementById('dramaModal'));
+                
+                // Llenar el modal con datos
+                document.getElementById('modalImage').src = this.querySelector('img').src;
+                document.getElementById('modalTitle').textContent = dramaCard.querySelector('h2').textContent;
+                document.getElementById('modalDesc').textContent = dramaCard.querySelector('p').textContent;
+                document.getElementById('modalLink').href = this.href;
+                document.getElementById('modalRating').textContent = dramaCard.querySelector('.porcentajes-kdrama').textContent;
+                
+                // Mostrar modal
+                modal.show();
+            });
+        });
+
     </script>
 
 </body>
