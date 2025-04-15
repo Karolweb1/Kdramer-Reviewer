@@ -94,98 +94,94 @@
                             </div>
                         </div>
                         
-                <!-- Sección de reseñas -->
-                <section class="resenas-container container mt-5">
-                    <h3 class="text-center mb-4">Reseñas de Todos los Doramas</h3>
-                    <div class="row" id="lista-resenas">
-                        <!-- Las reseñas se cargarán aquí dinámicamente -->
-                        <!-- Ejemplo de reseña -->
-                        <div class="col-md-4 col-sm-6 col-12 mb-4">
-                            <div class="card shadow-sm h-100">
-                                <img src="imagenes/dorama1.jpg" class="card-img-top" alt="Drama 1">
-                                <div class="card-body">
-                                    <h5 class="card-title">Nombre del Usuario</h5>
-                                    <div class="text-warning">
-                                        ★★★★☆
-                                    </div>
-                                    <p class="card-text">"Este es un comentario de ejemplo para la reseña del dorama. ¡Un gran K-drama para ver!"</p>
-                                    <small class="text-muted">Publicado el: 01/01/2023</small>
+        <!-- Sección de reseñas -->
+        <section class="resenas-container container mt-5">
+            <h3 class="text-center mb-4">Reseñas de Todos los Doramas</h3>
+            <div class="row" id="lista-resenas">
+                <!-- Las reseñas se cargarán aquí dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Bootstrap 5 JS Bundle con Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+        // Función para obtener el nombre del archivo de imagen
+        function obtenerNombreArchivo(kdramaNombre) {
+            const mapaNombres = {
+                "Nos Vemos en mi 19 Vida": "nosvemosenmivida",
+                "Tu Tiempo Llama": "tutiempoLlama",
+                "Mi Primer Amor": "miprimeramor",
+                "Cielo de Luna": "cielodeluna"
+                // Agrega más mapeos según necesites
+            };
+            
+            // Si está en el mapa, usa ese nombre
+            if (mapaNombres[kdramaNombre]) {
+                return mapaNombres[kdramaNombre];
+            }
+            
+            // Si no, genera un nombre válido
+            return kdramaNombre
+                .toLowerCase()
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // quita acentos
+                .replace(/\s+/g, '') // quita espacios
+                .replace(/[^a-z0-9]/g, ''); // quita caracteres especiales
+        }
+
+        // Función para cargar y mostrar las reseñas
+        function cargarResenas() {
+            const listaResenas = document.getElementById('lista-resenas');
+            const reseñasGuardadas = JSON.parse(localStorage.getItem('reseñas')) || {};
+            
+            listaResenas.innerHTML = ''; // Limpiar el contenedor
+            
+            // Recorrer todos los doramas con reseñas
+            for (const [kdramaNombre, reseñas] of Object.entries(reseñasGuardadas)) {
+                // Para cada reseña del dorama
+                reseñas.forEach(resena => {
+                    const nombreArchivo = obtenerNombreArchivo(kdramaNombre);
+                    const imagenRuta = `../imagenes/${nombreArchivo}.jpg`;
+                    
+                    const reseñaElement = document.createElement('div');
+                    reseñaElement.classList.add('col-md-4', 'col-sm-6', 'col-12', 'mb-4');
+                    
+                    reseñaElement.innerHTML = `
+                        <div class="card shadow-sm h-100">
+                            <img src="${imagenRuta}" class="card-img-top" alt="${kdramaNombre}" 
+                                onerror="this.onerror=null; this.src='../imagenes/imagen_predeterminada.jpg';">
+                            <div class="card-body">
+                                <h5 class="card-title">${resena.usuario}</h5>
+                                <div class="text-warning">
+                                    ${'★'.repeat(resena.calificacion)}${'☆'.repeat(5 - resena.calificacion)}
                                 </div>
+                                <p class="card-text">"${resena.comentario}"</p>
+                                <small class="text-muted">Publicado el: ${resena.fecha}</small>
+                                <p class="text-muted mt-2"><small>Drama: ${kdramaNombre}</small></p>
                             </div>
                         </div>
+                    `;
+                    
+                    listaResenas.appendChild(reseñaElement);
+                });
+            }
+            
+            // Si no hay reseñas, mostrar un mensaje
+            if (listaResenas.innerHTML === '') {
+                listaResenas.innerHTML = `
+                    <div class="col-12 text-center py-4">
+                        <p class="text-muted">No hay reseñas todavía. ¡Sé el primero en comentar!</p>
                     </div>
-                </section>
+                `;
+            }
+        }
+
+        // Cargar las reseñas cuando la página esté lista
+        document.addEventListener('DOMContentLoaded', cargarResenas);
+</script>
 
 
-    <!-- Bootstrap 5 JS Bundle con Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-// Aquí agregamos la funcionalidad para mostrar reseñas de todos los doramas de forma dinámica
-// Aquí agregamos la funcionalidad para mostrar reseñas de todos los doramas de forma dinámica
-document.addEventListener('DOMContentLoaded', () => {
-    const listaResenas = document.getElementById('lista-resenas');
-    
-    // Simulación de datos de reseñas (esto puede venir de una base de datos o localStorage)
-    const reseñas = [
-        {
-            usuario: "Usuario 1",
-            comentario: "¡Increíble drama! La historia te engancha desde el primer episodio.",
-            calificacion: 4,
-            fecha: "01/01/2023",
-            imagen: "imagenes/dorama1.jpg",
-            kdramaNombre: "Nos Vemos en mi 19 Vida"
-        },
-        {
-            usuario: "Usuario 2",
-            comentario: "Un dorama muy emocionante con personajes geniales.",
-            calificacion: 5,
-            fecha: "15/02/2023",
-            imagen: "imagenes/dorama2.jpg",
-            kdramaNombre: "Mi Primer Amor"
-        },
-        {
-            usuario: "Usuario 3",
-            comentario: "Buen dorama, aunque el final me dejó con algunas dudas.",
-            calificacion: 3,
-            fecha: "10/03/2023",
-            imagen: "imagenes/dorama3.jpg",
-            kdramaNombre: "Cielo de Luna"
-        },
-        // Aquí agregarías más reseñas
-    ];
-
-    // Mostrar las reseñas
-    reseñas.forEach(resena => {
-        const reseñaElement = document.createElement('div');
-        reseñaElement.classList.add('col-md-4', 'col-sm-6', 'col-12', 'mb-4');
-        
-        reseñaElement.innerHTML = `
-            <div class="card shadow-sm h-100">
-                <img src="${resena.imagen}" class="card-img-top" alt="${resena.kdramaNombre}">
-                <div class="card-body d-flex">
-                    <img src="${resena.imagen}" class="dorama-img" alt="${resena.kdramaNombre}">
-                    <div>
-                        <h5 class="card-title">${resena.usuario}</h5>
-                        <div class="text-warning">
-                            ${'★'.repeat(resena.calificacion)}${'☆'.repeat(5 - resena.calificacion)}
-                        </div>
-                        <p class="card-text">"${resena.comentario}"</p>
-                        <small class="text-muted">Publicado el: ${resena.fecha}</small>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        listaResenas.appendChild(reseñaElement);
-    });
-});
-
-
-    </script>
-
-
-    
+                <!-- ESTE ES EL SCRIPT DE LOS TOP3 -->
     <script>
         function obtenerTopKdramas() {
             const votos = JSON.parse(localStorage.getItem('votos')) || {}; 

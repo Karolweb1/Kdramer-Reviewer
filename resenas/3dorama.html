@@ -48,7 +48,44 @@
         </div>
     </div>
 
-
+            <!-- Información detallada -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <h1 class="card-title mb-3">La Reina de las Lagrimas</h1>
+                        
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded">
+                                    <h6 class="text-muted mb-2">Año</h6>
+                                    <p class="mb-0">2022</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded">
+                                    <h6 class="text-muted mb-2">Episodios</h6>
+                                    <p class="mb-0">16</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded">
+                                    <h6 class="text-muted mb-2">Duración</h6>
+                                    <p class="mb-0">70 min</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded">
+                                    <h6 class="text-muted mb-2">Plataforma</h6>
+                                    <p class="mb-0">Netflix</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="badge bg-primary me-1">Romance</span>
+                            <span class="badge bg-danger me-1">Fantasía</span>
+                            <span class="badge bg-success me-1">Drama</span>
+                        </div>
 
     <!-- Reseña del Kdrama -->
     <div class="reseña">
@@ -62,120 +99,302 @@
             En resumen, "La Reina de las Lagrimas" es una serie que, a través de su narrativa envolvente y actuaciones destacadas, ofrece una experiencia única para los amantes del drama romantico y la fantasía. Disponible en Netflix, es una opción recomendada para quienes buscan una historia que toque el corazón y desafíe las percepciones del tiempo y el amor.</p>
     </div>
 
-    <div class="sidebar">
-        <h3>Acceso Rapido</h3>
-        <ul>
-            <li><a href="../menus/foro.html">Foro</a></li>
-        </ul>
-    </div>
-    
-
-    <!-- Sección de comentarios -->
-    <div class="opiniones">
-        <textarea placeholder="Escribe tu opinión..." rows="4" cols="50"></textarea>
-        <button class="enviar" onclick="enviarOpinion()">Enviar</button>
-        <div class="comentarios" id="comentarios-dorama">
-            <!-- Aquí se mostraran las opiniones -->
+                        <!-- Formulario para nueva reseña -->
+                         
+                        <!-- Formulario para nueva reseña -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Deja tu reseña</h4>
+                                <form id="form-resena">
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Calificación</label>
+                                        <div class="estrellas-form d-flex justify-content-center mb-3">
+                                            <span class="estrella-form mx-1" data-value="1">&#9733;</span>
+                                            <span class="estrella-form mx-1" data-value="2">&#9733;</span>
+                                            <span class="estrella-form mx-1" data-value="3">&#9733;</span>
+                                            <span class="estrella-form mx-1" data-value="4">&#9733;</span>
+                                            <span class="estrella-form mx-1" data-value="5">&#9733;</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comentario" class="form-label">Comentario</label>
+                                        <textarea class="form-control" id="comentario" rows="3" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Enviar reseña</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- Cuadro de reseñas existentes -->
+                        <div class="reseña-container">
+                            <h4 class="mb-4">Reseñas</h4>
+                            <div id="lista-resenas" class="row row-cols-1 g-3">
+                                <!-- Las reseñas se cargarán aquí dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </main>
 
-
-
+    <!-- Bootstrap 5 JS Bundle con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        function enviarOpinion() {
-    const opinion = document.querySelector('.opiniones textarea').value;
-    if (opinion) {
-        // Guardar la opinión y mostrarla
-        const comentarioDiv = document.createElement('div');
-        comentarioDiv.textContent = opinion;
-        document.getElementById('comentarios-dorama').appendChild(comentarioDiv);
-        // Agregar al foro
-        const mensajeDiv = document.createElement('div');
-        mensajeDiv.textContent = opinion;
-        document.getElementById('mensajes-general').appendChild(mensajeDiv);
-    }
-}
-    </script>
-    </div>
-    
-    
-    <div class="votacion">
-        <h3>Vota este Kdrama:</h3>
-        <label class="estrella" data-value="1">&#9733;</label>
-        <label class="estrella" data-value="2">&#9733;</label>
-        <label class="estrella" data-value="3">&#9733;</label>
-        <label class="estrella" data-value="4">&#9733;</label>
-        <label class="estrella" data-value="5">&#9733;</label>
-        <div id="porcentaje-La Reina de las Lagrimas">Porcentaje: 0%</div>
-    </div>
-        
-
-    <script>
-        function obtenerTopKdramas() {
-            const votos = JSON.parse(localStorage.getItem('votos')) || {}; 
-            const kdramas = [];
-    
-            for (const kdrama in votos) {
-                const votosKdrama = votos[kdrama].votos || [];
-                if (votosKdrama.length === 0) continue;
-    
-                const promedioVoto = votosKdrama.reduce((acc, voto) => acc + voto, 0) / votosKdrama.length;
-                const porcentaje = Math.round((promedioVoto / 5) * 100); 
-    
-                kdramas.push({ nombre: kdrama, porcentaje });
-            }
-    
-            kdramas.sort((a, b) => b.porcentaje - a.porcentaje);
-    
-            return kdramas.slice(0, 3);
-        }
-    
-        // ✅ Mapa de nombres reales de archivo
+        // Función para obtener el nombre del archivo de imagen
         function obtenerNombreArchivo(kdramaNombre) {
-            const mapa = {
+            const mapaNombres = {
+                "La Reina de las Lagrimas": "tuTiempoLlama",
                 "Nos Vemos en mi 19 Vida": "nosvemosenmivida",
-                // puedes seguir agregando más excepciones aquí si las necesitas
+                "Mi Primer Amor": "miprimeramor",
+                "Cielo de Luna": "cielodeluna"
             };
-    
-            return mapa[kdramaNombre] || kdramaNombre.replace(/\s+/g, '').toLowerCase();
+            
+            return mapaNombres[kdramaNombre] || kdramaNombre.toLowerCase().replace(/\s+/g, '');
         }
-    
-        function mostrarTop3() {
-            const top3 = obtenerTopKdramas();
-            const top3Container = document.getElementById('top-3');
-            top3Container.innerHTML = ''; // Limpiar antes de actualizar
-    
-            top3.forEach((kdrama, index) => {
-                const nombreArchivo = obtenerNombreArchivo(kdrama.nombre);
-    
-                const imagenRuta = `../imagenes/${nombreArchivo}.jpg`;
-                const enlaceResena = `../resenas/${nombreArchivo}.html`;
-    
-                console.log('Ruta de la imagen:', imagenRuta);
-    
-                const dramaElement = document.createElement('article');
-                dramaElement.classList.add('drama');
-    
-                dramaElement.innerHTML = `
-                    <div class="top-rank">${index + 1}</div>
-                    <a href="${enlaceResena}">
-                        <img src="${imagenRuta}" alt="${kdrama.nombre}" 
-                            onerror="console.log('Error al cargar la imagen:', '${imagenRuta}'); this.onerror=null; this.src='../imagenes/imagen_predeterminada.jpg';">
-                        <h3>${kdrama.nombre}</h3>
-                    </a>
-                    <span>Porcentaje: ${kdrama.porcentaje}%</span>
+
+        // Sistema de votación para el formulario
+        let calificacionSeleccionada = 0;
+        document.querySelectorAll('.estrella-form').forEach(estrella => {
+            estrella.addEventListener('click', function() {
+                const valor = parseInt(this.getAttribute('data-value'));
+                calificacionSeleccionada = valor;
+                
+                // Actualizar visualización de estrellas
+                document.querySelectorAll('.estrella-form').forEach((star, index) => {
+                    star.classList.toggle('active', index < valor);
+                });
+            });
+        });
+
+        // Función para guardar reseñas
+        function guardarResena(kdramaNombre, usuario, comentario, calificacion) {
+            const reseñas = JSON.parse(localStorage.getItem('reseñas')) || {};
+            
+            if (!reseñas[kdramaNombre]) {
+                reseñas[kdramaNombre] = [];
+            }
+            
+            reseñas[kdramaNombre].unshift({
+                usuario,
+                comentario,
+                calificacion,
+                fecha: new Date().toLocaleDateString(),
+                imagen: `../imagenes/${obtenerNombreArchivo(kdramaNombre)}.jpg`,
+                kdramaNombre: kdramaNombre
+            });
+            
+            localStorage.setItem('reseñas', JSON.stringify(reseñas));
+            return reseñas;
+        }
+
+        // Función para mostrar reseñas
+        function mostrarResenas() {
+            const contenedor = document.getElementById('lista-resenas');
+            contenedor.innerHTML = '';
+            
+            const kdramaNombre = "La Reina de las Lagrimas";
+            const reseñas = JSON.parse(localStorage.getItem('reseñas')) || {};
+            const reseñasDorama = reseñas[kdramaNombre] || [];
+            
+            if (reseñasDorama.length === 0) {
+                contenedor.innerHTML = `
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            No hay reseñas todavía. ¡Sé el primero en comentar!
+                        </div>
+                    </div>
                 `;
-    
-                top3Container.appendChild(dramaElement);
+                return;
+            }
+            
+            reseñasDorama.forEach(resena => {
+                const col = document.createElement('div');
+                col.className = 'col';
+                
+                col.innerHTML = `
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title">${resena.usuario}</h5>
+                                <div class="text-warning">
+                                    ${'★'.repeat(resena.calificacion)}${'☆'.repeat(5-resena.calificacion)}
+                                </div>
+                            </div>
+                            <p class="card-text">${resena.comentario}</p>
+                            <small class="text-muted">Publicado el: ${resena.fecha}</small>
+                        </div>
+                    </div>
+                `;
+                
+                contenedor.appendChild(col);
             });
         }
-    
-        document.addEventListener("DOMContentLoaded", () => {
-            mostrarTop3();
+
+        // Manejo del formulario de reseñas
+        document.getElementById('form-resena').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const comentario = document.getElementById('comentario').value;
+            const kdramaNombre = "La Reina de las Lagrimas";
+            
+            if(calificacionSeleccionada === 0) {
+                alert('Por favor selecciona una calificación');
+                return;
+            }
+            
+            // Guardar la reseña
+            guardarResena(kdramaNombre, nombre, comentario, calificacionSeleccionada);
+            
+            // Mostrar las reseñas actualizadas
+            mostrarResenas();
+            
+            // Limpiar formulario
+            this.reset();
+            document.querySelectorAll('.estrella-form').forEach(star => {
+                star.classList.remove('active');
+            });
+            calificacionSeleccionada = 0;
+            
+            // Mostrar confirmación
+            alert('¡Tu reseña ha sido publicada!');
         });
+
+        // Al cargar la página, mostrar las reseñas existentes
+        document.addEventListener('DOMContentLoaded', mostrarResenas);
     </script>
 
-        
-    
 
+
+                        <!-- VOTACIONES -->
+    <script>
+            // Función para manejar el clic en las estrellas
+        document.querySelectorAll('.estrella').forEach(estrella => {
+        estrella.addEventListener('click', function () {
+        const kdrama = estrella.getAttribute('data-kdrama');
+        const valor = parseInt(estrella.getAttribute('data-value'));
+
+        // Obtener votos almacenados
+        let votosKdrama = JSON.parse(localStorage.getItem('votos')) || {};
+
+        if (!votosKdrama[kdrama]) {
+            votosKdrama[kdrama] = { votos: [] };
+        }
+
+        // Remplaza el voto solo del usuario, manteniendo los demas
+        votosKdrama[kdrama].votos = [valor]; // Cada usuario solo guarda un voto
+
+        localStorage.setItem('votos', JSON.stringify(votosKdrama));
+
+        // Actualizar la visualización y el ranking
+        actualizarEstrellas(kdrama);
+        calcularPorcentaje(kdrama);
+        mostrarTop3(); // Se actualiza el Top 3 en tiempo real
+        });
+        });
+
+
+
+        // Función para actualizar las estrellas según el voto almacenado
+        function actualizarEstrellas(kdrama) {
+        const votos = JSON.parse(localStorage.getItem('votos')) || {};
+        const estrellas = document.querySelectorAll(`.estrella[data-kdrama="${kdrama}"]`);
+        const votosKdrama = votos[kdrama] ? votos[kdrama].votos : [];
+
+        if (votosKdrama.length) {
+            const ultimoVoto = votosKdrama[votosKdrama.length - 1]; // Último voto
+            estrellas.forEach(estrella => {
+                const valor = parseInt(estrella.getAttribute('data-value'));
+
+                // Marcar las estrellas como doradas si se han seleccionado
+                if (valor <= ultimoVoto) {
+                    estrella.style.color = 'gold';  // Cambiar a dorado
+                } else {
+                    estrella.style.color = ''; // Devolver al color por defecto
+                }
+            });
+        }
+        }
+
+        // Calcular el porcentaje de votos basado en el promedio
+        function calcularPorcentaje(kdrama) {
+        const votos = JSON.parse(localStorage.getItem('votos')) || {};
+        const votosKdrama = votos[kdrama] || { votos: [] };
+        const totalVotos = votosKdrama.votos.length;
+
+        if (totalVotos > 0) {
+            // Calcular el promedio de las estrellas
+            const promedio = votosKdrama.votos.reduce((acc, voto) => acc + voto, 0) / totalVotos;
+
+            // Convertir el promedio a porcentaje
+            const porcentaje = (promedio / 5) * 100;
+
+            const porcentajeElemento = document.getElementById(`porcentaje-${kdrama}`);
+            porcentajeElemento.textContent = `${porcentaje.toFixed(0)}%`;
+        }
+        }
+
+        // Cargar los votos almacenados al cargar la pagina
+        window.onload = function () {
+        const votosGuardados = JSON.parse(localStorage.getItem('votos')) || {};
+        for (const kdrama in votosGuardados) {
+            actualizarEstrellas(kdrama);
+            calcularPorcentaje(kdrama);
+        }
+        };
+    </script>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="dramaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" class="img-fluid rounded mb-3" id="modalImage" style="max-height: 70vh;">
+                <p id="modalDesc"></p>
+                <div class="mt-3" id="modalRating"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="#" class="btn btn-primary" id="modalLink">Ver detalles</a>
+            </div>
+        </div>
+        </div>
+        </div>
+
+<!-- Bootstrap 5 JS Bundle con Popper (SOLO UNA VEZ) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Función para el modal
+        document.querySelectorAll('.drama > a').forEach(el => {
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dramaCard = this.closest('.drama');
+            const modal = new bootstrap.Modal(document.getElementById('dramaModal'));
+            
+            // Llenar el modal con datos
+            document.getElementById('modalImage').src = this.querySelector('img').src;
+            document.getElementById('modalTitle').textContent = dramaCard.querySelector('h2').textContent;
+            document.getElementById('modalDesc').textContent = dramaCard.querySelector('p').textContent;
+            document.getElementById('modalLink').href = this.href;
+            document.getElementById('modalRating').textContent = dramaCard.querySelector('.porcentajes-kdrama').textContent;
+            
+            // Mostrar modal
+            modal.show();
+        });
+        });
+
+    </script>
 </body>
 </html>

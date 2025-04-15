@@ -19,11 +19,11 @@ body {
 .barra-navegacion {
     background-color: #895DFF;
     color: white;
-    padding: 15px 20px;
+    padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* ------------------------- */
@@ -36,8 +36,10 @@ header {
 }
 
 .titulo {
-    font-size: 3rem;
+    font-size: 2rem;
+    color: white;
     margin: 10px 0;
+    margin-top: 0.5rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
@@ -50,11 +52,12 @@ header {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 10px 0;
+    gap: 1.5rem;
+    padding: 0;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 1rem;
 }
 
 .menu li {
@@ -77,6 +80,7 @@ header {
     background-color: transparent;
     transform: translateY(-2px);
     box-shadow: none;
+    text-decoration: underline;
 }
 
 .menu a:hover::after {
@@ -93,6 +97,11 @@ header {
 /* ------------------------- */
 /* LISTADO PRINCIPAL DE K-DRAMAS */
 /* ------------------------- */
+.pagina-principal {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
 .pagina-principal .listado-dramas {
     display: flex;
     flex-direction: column;
@@ -133,6 +142,8 @@ header {
     align-items: center;
     gap: 0.5rem;
     margin-top: 1rem;
+    cursor: pointer;
+    padding: 1rem;
 }
 
 .votacion > h3 {
@@ -141,16 +152,17 @@ header {
     vertical-align: middle;
     font-size: 16px;
     color: #333;
+    cursor: pointer;
 }
 
 .estrellas {
-    font-size: 20px;
+    font-size: 2rem;
     color: #ccc;
     cursor: pointer;
     gap: 0.25rem;
     vertical-align: middle;
     display: flex;
-    margin: 5px 0;
+    margin: 0.5rem 0;
 }
 
 .estrella {
@@ -173,10 +185,20 @@ header {
     margin-top: 12px;
 }
 
+.estrella-form {
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s;
+}
+
+.estrella-form:hover, .estrella-form.active {
+    color: gold;
+}
+
 .porcentajes-kdrama {
     display: inline-block;
     margin-left: 10px;
-    font-size: 0.9rem;
+    font-size: 1.25rem;
     font-weight: bold;
     color: #666;
     background: #f8f9fa;
@@ -426,6 +448,10 @@ header {
     display: flex;
 }
 
+#lista-resenas .card {
+    margin-bottom: 1rem;
+}
+
 /* ------------------------- */
 /* CATEGORÍAS */
 /* ------------------------- */
@@ -445,18 +471,27 @@ header {
 }
 
 .card {
-    border: none;
-    border-radius: 10px;
+    border-radius: 0.12px;
     overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .card-img-top {
-    height: 200px;
+    height: 250px;
     object-fit: cover;
+    width: 100%;
 }
 
 .card-body {
-    padding: 20px;
+    padding: 25px;
     background-color: #f8f9fa;
     border-radius: 10px;
 }
@@ -477,6 +512,7 @@ header {
 .text-warning {
     color: gold;
     font-size: 1.3rem;
+    letter-spacing: 2px;
 }
 
 .text-muted {
@@ -489,6 +525,35 @@ header {
     border-radius: 5px;
     margin-right: 15px;
 }
+
+/* Badges de categorías */
+.badge {
+    font-weight: 500;
+    padding: 0.5em 0.8em;
+    margin-right: 0.5em;
+}
+
+/* Estilo para la sección de sinopsis (que incluye la reseña) */
+.sinopsis {
+    margin: 25px 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.sinopsis h4 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.sinopsis p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    text-align: justify;
+}
+
 
 /* ------------------------- */
 /* FORMULARIO DE OPINIÓN */
@@ -545,11 +610,18 @@ header {
     }
 }
 
+@media (max-width: 992px) {
+    .card-img-top {
+        height: 400px;
+    }
+}
+
 @media (max-width: 768px) {
     .menu {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 1rem;
+        flex-wrap: wrap;
     }
 
     .menu li {
@@ -577,6 +649,10 @@ header {
 
     .card-title {
         font-size: 1.1rem;
+    }
+        
+    .card-img-top {
+        height: 350px;
     }
 }
 
