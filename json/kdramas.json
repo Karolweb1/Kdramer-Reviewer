@@ -1,0 +1,78 @@
+{
+    "kdramas": [
+        {
+            "nombre": "Tu Tiempo Llama",
+            "imagen": "tuTiempoLlama.jpg",
+            "descripcion": "Un drama romantico sobre el destino y el amor a través del tiempo.",
+            "url": "resenas/1dorama.html",
+            "generos": ["Romance", "Fantasía"],
+            "plataforma": "Viki",
+            "porcentaje": 0
+        },
+        {
+            "nombre": "Veinticinco Veintiuno",
+            "imagen": "VeinticincoVeintiuno.jpg",
+            "descripcion": "Un drama romantico sobre el destino y el amor a través del tiempo.",
+            "url": "resenas/2dorama.html",
+            "generos": ["Romance", "Fantasía"],
+            "plataforma": "Viki",
+            "porcentaje": 0
+        },
+        {
+            "nombre": "La Reina de las Lagrimas",
+            "imagen": "../imagenes/lareinadelaslagrimas.jpg",
+            "descripcion": "Una historia de amor entre una heredera surcoreana y un oficial norcoreano.",
+            "url": "../resenas/3dorama.html",
+            "categoria": ["Romance", "Drama", "Melodrama"],
+            "plataforma": "Viki",
+            "puntuacion": 89
+        },
+        {
+            "nombre": "Abogada Woo",
+            "imagen": "../imagenes/AbogadaWoo.jpg",
+            "descripcion": "Una historia de amor entre una heredera surcoreana y un oficial norcoreano.",
+            "url": "../resenas/4dorama.html",
+            "categoria": ["Legal", "Drama", "Inspiracional"],
+            "plataforma": "Netflix",
+            "puntuacion": 89
+        },
+        {
+            "nombre": "Nos Vemos en mi 19 Vida",
+            "imagen": "../imagenes/nosvemosenmivida.jpg",
+            "descripcion": "Una historia de amor entre una heredera surcoreana y un oficial norcoreano.",
+            "url": "resenas/5dorama.html",
+            "categoria": ["Romance", "Fantasía", "Reencarnación"],
+            "plataforma": "Prime Video",
+            "puntuacion": 89
+        },
+        {
+            "nombre": "La Buena Mala Madre",
+            "imagen": "../imagenes/labuenamalamadre.jpg",
+            "descripcion": "Una historia de amor entre una heredera surcoreana y un oficial norcoreano.",
+            "url": "../resenas/6dorama.html",
+            "categoria": ["Drama", "Familiar", "Emotivo"],
+            "plataforma": "Viki",
+            "puntuacion": 89
+        },
+        {
+            "nombre": "Kings The Land",
+            "imagen": "../imagenes/KingsTheLand.jpg",
+            "descripcion": "Una historia de amor entre una heredera surcoreana y un oficial norcoreano.",
+            "url": "resenas/5dorama.html",
+            "categoria": ["Comedia Romántica", "Corporativa"],
+            "plataforma": "Netflix",
+            "puntuacion": 89
+        },
+        {
+            "nombre": "Itaewon class",
+            "imagen": "../imagenes/Itaewonclass.jpg",
+            "descripcion": "Una historia de amor entre una heredera surcoreana y un oficial norcoreano.",
+            "enlace": "../resenas/6dorama.html",
+            "categoria": ["Drama", "Superación", "Emprendimiento"],
+            "plataforma": "Prime Video",
+            "puntuacion": 89
+        }
+
+    ]
+  }
+

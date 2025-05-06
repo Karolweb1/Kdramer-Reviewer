@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>FORO - Kdramer Reviewer</title>
+</head>
+
+<body class="pagina-principal">
+
+<!-- Barra de navegación con menú hamburguesa -->
+    <header class="barra-navegacion">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">
+                    <h1 class="titulo">KDRAMER REVIEWER</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto menu">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/foro.html">Foro</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/categorias.html">Categorías</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/plataformas.html">Plataformas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/series.html">Series</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/cuenta.html">Cuenta</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+<!-- Top 3 -->
+    <section class="top-dramas mb-4">
+        <h2 class="text-center mb-3">Top 3 de los Mejores Doramas</h2>
+        <div class="row" id="top-3">
+            <div class="col-md-4 col-sm-6 col-12 mb-3">
+                <div class="card h-100 text-center shadow-sm">
+                    <img src="imagenes/dorama1.jpg" class="card-img-top" alt="Drama 1" href="resenas/1dorama.html">
+                    <div class="card-body py-2">
+                        <h5 class="card-title">Drama 1</h5>
+                        <p class="card-text">Porcentaje: 95%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 mb-3">
+                <div class="card h-100 text-center shadow-sm">
+                    <img src="imagenes/dorama2.jpg" class="card-img-top" alt="Drama 2" href="resenas/2dorama.html">
+                    <div class="card-body py-2">
+                        <h5 class="card-title">Drama 2</h5>
+                        <p class="card-text">Porcentaje: 93%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 mb-3">
+                <div class="card h-100 text-center shadow-sm">
+                    <img src="imagenes/dorama3.jpg" class="card-img-top" alt="Drama 3" href="resenas/3dorama.html">
+                    <div class="card-body py-2">
+                        <h5 class="card-title">Drama 3</h5>
+                        <p class="card-text">Porcentaje: 91%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- RESEÑAS - Formulario para nueva reseña -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title mb-3">Deja tu reseña</h4>
+            <form id="form-resena">
+                <div class="mb-3">
+                    <label for="kdrama-seleccionado" class="form-label">Selecciona un K-Drama</label>
+                    <select class="form-select" id="kdrama-seleccionado" required>
+                        <option value="" selected disabled>-- Cargando K-Dramas --</option>
+                        <!-- Las opciones se cargarán automáticamente desde json/kdramas.json -->
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Calificación</label>
+                    <div class="estrellas-form d-flex justify-content-center mb-3" style="font-size: 1.8rem;">
+                        <span class="estrella-form mx-1" data-value="1">★</span>
+                        <span class="estrella-form mx-1" data-value="2">★</span>
+                        <span class="estrella-form mx-1" data-value="3">★</span>
+                        <span class="estrella-form mx-1" data-value="4">★</span>
+                        <span class="estrella-form mx-1" data-value="5">★</span>
+                    </div>
+                    <input type="hidden" id="calificacion" value="0"> <!-- Campo oculto para guardar la calificación -->
+                </div>
+                <div class="mb-3">
+                    <label for="comentario" class="form-label">Comentario</label>
+                    <textarea class="form-control" id="comentario" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar reseña</button>
+            </form>
+        </div>
+    </div>
+
+<!-- RESEÑAS DE CADA DORAMA EN EL FORO -->
+    <section class="resenas-container container mt-5">
+        <h3 class="text-center mb-4">Reseñas de Todos los Doramas</h3>
+        <div class="row" id="lista-resenas">
+    <!-- Las reseñas se cargarán aquí dinámicamente -->
+        </div>
+    </section>
+
+
+
+<!-- PARA QUE CARGUEN DEL js -->
+    <script type="module">
+        import { cargarKdramas } from '../js/kdramasLoader.js';
+
+        cargarKdramas({
+        jsonPath: '../json/kdramas.json',
+        filtroTipo: 'plataforma', // o 'categoria'
+        selectorFiltros: '#filtros-plataformas', // o el que tengas
+        selectorTarjetas: '#contenedor-doramas',
+        selectorTitulo: '#titulo-plataforma-seleccionada'
+        });
+    </script>
+<!-- PARA QUE CARGUEN DEL JSON -->
+    <script>
+    // Cargar el menú de selección de K-Dramas con TODOS los datos
+    const selectKdramas = document.getElementById('kdrama-seleccionado');
+    data.forEach(serie => {
+        const option = document.createElement('option');
+        option.value = serie.titulo;
+        option.textContent = serie.titulo;
+        selectKdramas.appendChild(option);
+    });
+
+    // Cargar reseñas (puedes limitar si quieres)
+    const listaResenas = document.getElementById('lista-resenas');
+    listaResenas.innerHTML = '';
+    data.forEach(serie => {
+        listaResenas.innerHTML += `
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="${serie.imagen}" class="card-img-top" alt="${serie.titulo}">
+                    <div class="card-body">
+                        <h5 class="card-title">${serie.titulo}</h5>
+                        <p class="card-text">Puntuación: ${serie.puntuacion}%</p>
+                        <a href="${serie.enlace}" class="btn btn-primary">Ver Reseña</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    </script>
+<!-- ESTE ES EL SCRIPT DE LOS TOP3 -->
+    <script>
+        function obtenerTopKdramas() {
+            const votos = JSON.parse(localStorage.getItem('votos')) || {}; 
+            const kdramas = [];
+    
+            for (const kdrama in votos) {
+                const votosKdrama = votos[kdrama].votos || [];
+                if (votosKdrama.length === 0) continue;
+    
+                const promedioVoto = votosKdrama.reduce((acc, voto) => acc + voto, 0) / votosKdrama.length;
+                const porcentaje = Math.round((promedioVoto / 5) * 100); 
+    
+                kdramas.push({ nombre: kdrama, porcentaje });
+            }
+    
+            kdramas.sort((a, b) => b.porcentaje - a.porcentaje);
+    
+            return kdramas.slice(0, 3);
+    }
+    
+        // ✅ Mapa de nombres reales de archivo
+        // Reemplaza todas las versiones con esta única función
+        function obtenerNombreArchivo(kdramaNombre) {
+            const mapaNombres = {
+                "Nos Vemos en mi 19 Vida": "nosvemosenmivida",
+                "Tu Tiempo Llama": "tuTiempoLlama",
+                "Veinticinco Veintiuno": "VeinticincoVeintiuno", // Nombre EXACTO del archivo
+                "VeinticincoVeintiuno": "VeinticincoVeintiuno", // Alias para evitar duplicados
+                "Abogada Woo": "abogadaWoo",
+                "La Reina de las Lagrimas": "lareinadelaslagrimas",
+                "Kings The Land": "KingsTheLand",
+                "Itaewon Class": "itaewonclass",
+                "La Buena Mala Madre": "buenamalamadre"
+            };
+            
+            // Limpieza adicional para nombres con/sin espacios
+            const nombreLimpio = kdramaNombre.replace(/\s+/g, '');
+            return mapaNombres[kdramaNombre] || mapaNombres[nombreLimpio] || nombreLimpio;
+        }
+
+        function mostrarTop3() {
+            const top3 = obtenerTopKdramas();
+            const top3Container = document.getElementById('top-3');
+            top3Container.innerHTML = '';
+
+            // Verifica si hay datos
+            if (top3.length === 0) {
+                top3Container.innerHTML = `
+                    <div class="col-12 text-center py-4">
+                        <p class="text-muted">No hay suficientes votos para mostrar el Top 3</p>
+                    </div>
+                `;
+                return;
+            }
+
+            top3.forEach((kdrama, index) => {
+                const nombreArchivo = obtenerNombreArchivo(kdrama.nombre);
+                const imagenRuta = `../imagenes/${nombreArchivo}.jpg`;
+                
+                const col = document.createElement('div');
+                col.className = 'col-md-4 col-sm-6 col-12 mb-3';
+                
+                col.innerHTML = `
+                    <div class="card h-100 text-center shadow-sm">
+                        <img src="${imagenRuta}" class="card-img-top" 
+                            alt="${kdrama.nombre}"
+                            onerror="this.src='../imagenes/default.jpg'; this.alt='Imagen no disponible'">
+                        <div class="card-body py-2">
+                            <h5 class="card-title">${kdrama.nombre}</h5>
+                            <p class="card-text">Porcentaje: ${kdrama.porcentaje}%</p>
+                        </div>
+                    </div>
+                `;
+                
+                top3Container.appendChild(col);
+            });
+        }
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            mostrarTop3();
+        });
+    </script>
+<!-- SCRIPT PARA QUE EL DESPLEGABLE DE LAS RESEÑAS CARGUE AUTOMATICO LOS DORAMAS -->
+    <script>
+    // 1. Cargar K-Dramas desde el JSON
+    async function cargarKdramas() {
+        try {
+            const response = await fetch('../json/kdramas.json');
+            const data = await response.json();
+            return data.kdramas; // Retorna el array de K-Dramas
+        } catch (error) {
+            console.error("Error al cargar K-Dramas:", error);
+            return [];
+        }
+    }
+    
+    // 2. Rellenar el dropdown con K-Dramas
+    async function cargarDropdownResenas() {
+        const select = document.getElementById('kdrama-seleccionado');
+        const kdramas = await cargarKdramas();
+        
+        // Ordenar alfabéticamente y agregar opciones
+        kdramas.sort((a, b) => a.nombre.localeCompare(b.nombre)).forEach(kdrama => {
+            const option = document.createElement('option');
+            option.value = kdrama.nombre;
+            option.textContent = kdrama.nombre;
+            select.appendChild(option);
+        });
+        
+        // Actualizar texto inicial
+        if (kdramas.length > 0) {
+            select.options[0].text = "― Elige un K-Drama ―";
+        }
+    }
+    
+    // 3. Configurar estrellas de calificación
+    document.querySelectorAll('.estrella-form').forEach(estrella => {
+        estrella.addEventListener('click', function() {
+            const valor = parseInt(this.getAttribute('data-value'));
+            document.getElementById('calificacion').value = valor;
+            
+            // Pintar las estrellas seleccionadas
+            document.querySelectorAll('.estrella-form').forEach((star, index) => {
+                star.style.color = index < valor ? 'gold' : '#ccc';
+            });
+        });
+    });
+    
+    // 4. Enviar reseña al hacer submit
+    document.getElementById('form-resena').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const kdrama = document.getElementById('kdrama-seleccionado').value;
+        const nombre = document.getElementById('nombre').value;
+        const calificacion = document.getElementById('calificacion').value;
+        const comentario = document.getElementById('comentario').value;
+        
+        if (!kdrama || calificacion === "0") {
+            alert("⚠️ Completa todos los campos y selecciona una calificación");
+            return;
+        }
+        
+        // Guardar reseña en localStorage
+        const reseñasGuardadas = JSON.parse(localStorage.getItem('reseñas')) || {};
+        if (!reseñasGuardadas[kdrama]) reseñasGuardadas[kdrama] = [];
+        
+        reseñasGuardadas[kdrama].push({
+            usuario: nombre,
+            calificacion: parseInt(calificacion),
+            comentario: comentario,
+            fecha: new Date().toLocaleDateString('es-ES')
+        });
+        
+        localStorage.setItem('reseñas', JSON.stringify(reseñasGuardadas));
+        alert("✅ Reseña guardada correctamente");
+        this.reset(); // Limpiar formulario
+    });
+    
+    // █ INICIALIZAR AL CARGAR LA PÁGINA
+    document.addEventListener('DOMContentLoaded', () => {
+        cargarDropdownResenas(); // Carga el dropdown automáticamente
+    });
+    </script>
+<!-- ESTE ES EL SCRIPT DE LOS LAS RESEÑAS PARA EL FORO -->
+    <script>
+    function obtenerNombreArchivo(kdramaNombre) {
+        // Primero normalizamos el nombre (elimina espacios extras, mayúsculas inconsistentes)
+        const nombreNormalizado = kdramaNombre
+            .trim()
+            .replace(/\s+/g, ' ') // Reemplaza múltiples espacios por uno solo
+            .toLowerCase();
+        
+        // Mapa de nombres normalizados a nombres de archivo
+        const mapaNombres = {
+            "nos vemos en mi 19 vida": "nosvemosenmivida",
+            "tu tiempo llama": "tuTiempoLlama",
+            "veinticinco veintiuno": "VeinticincoVeintiuno",
+            "abogada woo": "abogadaWoo",
+            "la reina de las lagrimas": "lareinadelaslagrimas",
+            "kings the land": "KingsTheLand",
+            "itaewon class": "itaewonclass",
+            "la buena mala madre": "buenamalamadre"
+        };
+        
+        return mapaNombres[nombreNormalizado] || kdramaNombre.replace(/\s+/g, '');
+    }
+
+    // Función mejorada para manejo de imágenes
+    function cargarImagenSegura(elementoImg, ruta, alt) {
+        const img = new Image();
+        img.src = ruta;
+        img.alt = alt;
+        
+        img.onload = function() {
+            elementoImg.src = ruta;
+            elementoImg.alt = alt;
+        };
+        
+        img.onerror = function() {
+            elementoImg.src = '../imagenes/default.jpg';
+            elementoImg.alt = 'Imagen no disponible';
+        };
+    }
+        // Función para cargar y mostrar las reseñas
+    async function cargarResenas() {
+        const listaResenas = document.getElementById('lista-resenas');
+        const reseñasGuardadas = JSON.parse(localStorage.getItem('reseñas')) || {};
+        
+        listaResenas.innerHTML = ''; // Limpiar el contenedor
+        
+        // Cargamos los K-Dramas desde el JSON para asegurar consistencia
+        const kdramas = await cargarKdramas();
+        const mapaKdramas = {};
+        
+        // Creamos un mapa de nombres normalizados a datos del K-Drama
+        kdramas.forEach(kdrama => {
+            const nombreNormalizado = kdrama.nombre.toLowerCase().trim().replace(/\s+/g, ' ');
+            mapaKdramas[nombreNormalizado] = kdrama;
+        });
+
+        // Recorrer todas las reseñas
+        for (const [kdramaNombre, reseñas] of Object.entries(reseñasGuardadas)) {
+            // Normalizamos el nombre del K-Drama de la reseña
+            const nombreNormalizado = kdramaNombre.toLowerCase().trim().replace(/\s+/g, ' ');
+            const kdrama = mapaKdramas[nombreNormalizado];
+            
+            // Para cada reseña del dorama
+            reseñas.forEach(resena => {
+                const nombreArchivo = kdrama ? kdrama.archivo : obtenerNombreArchivo(kdramaNombre);
+                const imagenRuta = `../imagenes/${nombreArchivo}.jpg`;
+                
+                const reseñaElement = document.createElement('div');
+                reseñaElement.classList.add('col-md-4', 'col-sm-6', 'col-12', 'mb-4');
+                
+                reseñaElement.innerHTML = `
+                    <div class="card shadow-sm h-100">
+                        <img src="${imagenRuta}" class="card-img-top" alt="${kdramaNombre}" 
+                            onerror="this.onerror=null; this.src='../imagenes/default.jpg';">
+                        <div class="card-body">
+                            <h5 class="card-title">${resena.usuario}</h5>
+                            <div class="text-warning">
+                                ${'★'.repeat(resena.calificacion)}${'☆'.repeat(5 - resena.calificacion)}
+                            </div>
+                            <p class="card-text">"${resena.comentario}"</p>
+                            <small class="text-muted">Publicado el: ${resena.fecha}</small>
+                            <p class="text-muted mt-2"><small>Drama: ${kdramaNombre}</small></p>
+                        </div>
+                    </div>
+                `;
+                
+                listaResenas.appendChild(reseñaElement);
+            });
+        }
+        
+        // Si no hay reseñas, mostrar un mensaje
+        if (listaResenas.innerHTML === '') {
+            listaResenas.innerHTML = `
+                <div class="col-12 text-center py-4">
+                    <p class="text-muted">No hay reseñas todavía. ¡Sé el primero en comentar!</p>
+                </div>
+            `;
+        }
+    }
+
+    // Función auxiliar para cargar K-Dramas desde JSON
+    async function cargarKdramas() {
+        try {
+            const response = await fetch('../json/kdramas.json');
+            const data = await response.json();
+            return data.kdramas || [];
+        } catch (error) {
+            console.error("Error al cargar K-Dramas:", error);
+            return [];
+        }
+    }
+
+        // Cargar las reseñas cuando la página esté lista
+        document.addEventListener('DOMContentLoaded', cargarResenas);
+    </script>    
+
+<!-- VOTACIONES -->
+    <script>
+            // Función para manejar el clic en las estrellas
+        document.querySelectorAll('.estrella').forEach(estrella => {
+        estrella.addEventListener('click', function () {
+        const kdrama = estrella.getAttribute('data-kdrama');
+        const valor = parseInt(estrella.getAttribute('data-value'));
+
+        // Obtener votos almacenados
+        let votosKdrama = JSON.parse(localStorage.getItem('votos')) || {};
+
+        if (!votosKdrama[kdrama]) {
+            votosKdrama[kdrama] = { votos: [] };
+        }
+
+        // Remplaza el voto solo del usuario, manteniendo los demas
+        votosKdrama[kdrama].votos = [valor]; // Cada usuario solo guarda un voto
+
+        localStorage.setItem('votos', JSON.stringify(votosKdrama));
+
+        // Actualizar la visualización y el ranking
+        actualizarEstrellas(kdrama);
+        calcularPorcentaje(kdrama);
+        mostrarTop3(); // Se actualiza el Top 3 en tiempo real
+        });
+        });
+
+
+
+        // Función para actualizar las estrellas según el voto almacenado
+        function actualizarEstrellas(kdrama) {
+        const votos = JSON.parse(localStorage.getItem('votos')) || {};
+        const estrellas = document.querySelectorAll(`.estrella[data-kdrama="${kdrama}"]`);
+        const votosKdrama = votos[kdrama] ? votos[kdrama].votos : [];
+
+        if (votosKdrama.length) {
+            const ultimoVoto = votosKdrama[votosKdrama.length - 1]; // Último voto
+            estrellas.forEach(estrella => {
+                const valor = parseInt(estrella.getAttribute('data-value'));
+
+                // Marcar las estrellas como doradas si se han seleccionado
+                if (valor <= ultimoVoto) {
+                    estrella.style.color = 'gold';  // Cambiar a dorado
+                } else {
+                    estrella.style.color = ''; // Devolver al color por defecto
+                }
+            });
+        }
+        }
+
+        // Calcular el porcentaje de votos basado en el promedio
+        function calcularPorcentaje(kdrama) {
+        const votos = JSON.parse(localStorage.getItem('votos')) || {};
+        const votosKdrama = votos[kdrama] || { votos: [] };
+        const totalVotos = votosKdrama.votos.length;
+
+        if (totalVotos > 0) {
+            // Calcular el promedio de las estrellas
+            const promedio = votosKdrama.votos.reduce((acc, voto) => acc + voto, 0) / totalVotos;
+
+            // Convertir el promedio a porcentaje
+            const porcentaje = (promedio / 5) * 100;
+
+            const porcentajeElemento = document.getElementById(`porcentaje-${kdrama}`);
+            porcentajeElemento.textContent = `${porcentaje.toFixed(0)}%`;
+        }
+        }
+
+        // Cargar los votos almacenados al cargar la pagina
+        window.onload = function () {
+        const votosGuardados = JSON.parse(localStorage.getItem('votos')) || {};
+        for (const kdrama in votosGuardados) {
+            actualizarEstrellas(kdrama);
+            calcularPorcentaje(kdrama);
+        }
+        };
+    </script>
+<!-- Modal -->
+    <div class="modal fade" id="dramaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="" class="img-fluid rounded mb-3" id="modalImage" style="max-height: 70vh;">
+                    <p id="modalDesc"></p>
+                    <div class="mt-3" id="modalRating"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="#" class="btn btn-primary" id="modalLink">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- fUNCION PARA EL MODAL -->
+    <script>
+        // Función para el modal
+        document.querySelectorAll('.drama > a').forEach(el => {
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dramaCard = this.closest('.drama');
+            const modal = new bootstrap.Modal(document.getElementById('dramaModal'));
+            
+            // Llenar el modal con datos
+            document.getElementById('modalImage').src = this.querySelector('img').src;
+            document.getElementById('modalTitle').textContent = dramaCard.querySelector('h2').textContent;
+            document.getElementById('modalDesc').textContent = dramaCard.querySelector('p').textContent;
+            document.getElementById('modalLink').href = this.href;
+            document.getElementById('modalRating').textContent = dramaCard.querySelector('.porcentajes-kdrama').textContent;
+            
+            // Mostrar modal
+            modal.show();
+        });
+        });
+    </script>
+<!-- Bootstrap 5 JS Bundle con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- MENU -->
+    <script>
+        // Resaltar enlace activo en el menú
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if(link.href === window.location.href) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+
+    </body>
+</html>

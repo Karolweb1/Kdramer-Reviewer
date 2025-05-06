@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>NOS VEMOS EN MI 19° VIDA - Kdramer Reviewer</title>
+</head>
+
+<body class="pagina-principal">
+<!-- Barra de navegación con menú hamburguesa -->
+    <header class="barra-navegacion">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">
+                    <h1 class="titulo">KDRAMER REVIEWER</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto menu">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/foro.html">Foro</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/categorias.html">Categorías</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/plataformas.html">Plataformas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/series.html">Series</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../menus/cuenta.html">Cuenta</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<!-- Contenido principal -->
+    <main class="container mt-4">
+        <div class="row">
+            <!-- Columna izquierda: Portada y votación -->
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <img src="../imagenes/nosvemosenmivida.jpg" class="card-img-top img-fluid" alt="NOS VEMOS EN MI 19 VIDA">
+                    <div class="card-body text-center">
+                        <!-- Sistema de votación (DEBE SER IGUAL) -->
+                        <div class="votacion mt-3">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Columna derecha: Información detallada -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <h1 class="card-title mb-3">NOS VEMOS EN MI 19° VIDA</h1>
+                        
+                        <!-- Metadata (Año, episodios, etc.) -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded">
+                                    <h6 class="text-muted mb-2">Año</h6>
+                                    <p class="mb-0">[AÑO]</p>
+                                </div>
+                            </div>
+                            <!-- Repetir para Episodios, Duración, Plataforma -->
+                        </div>
+                        
+                        <!-- Badges de categorías -->
+                        <div class="mb-4">
+                            <span class="badge bg-primary me-1">Romance</span>
+                            <span class="badge bg-danger me-1">Misterio</span>
+                            <!-- Añadir más si es necesario -->
+                        </div>
+                        
+                        <!-- Sección de sinopsis (aquí va tu reseña) -->
+                        <div class="sinopsis mb-4">
+                            <h4 class="mb-3">Sinopsis</h4>
+                            <p>Un conmovedor drama romántico que sigue la historia de dos almas destinadas a encontrarse a través del tiempo. Cuando una joven escritora descubre que puede comunicarse con el pasado a través de un misterioso reloj antiguo, su vida se entrelaza con la de un pintor de los años 50 en una emotiva historia sobre el amor, el destino y las segundas oportunidades.</p>
+                        </div>
+
+
+
+
+
+                        <!-- Formulario para nueva reseña -->
+                        
+                        <!-- Formulario para nueva reseña -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Deja tu reseña</h4>
+                                <form id="form-resena">
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Calificación</label>
+                                        <div class="estrellas-form d-flex justify-content-center mb-3">
+                                            <span class="estrella-form mx-1" data-value="1">&#9733;</span>
+                                            <span class="estrella-form mx-1" data-value="2">&#9733;</span>
+                                            <span class="estrella-form mx-1" data-value="3">&#9733;</span>
+                                            <span class="estrella-form mx-1" data-value="4">&#9733;</span>
+                                            <span class="estrella-form mx-1" data-value="5">&#9733;</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comentario" class="form-label">Comentario</label>
+                                        <textarea class="form-control" id="comentario" rows="3" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Enviar reseña</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- Cuadro de reseñas existentes -->
+                        <div class="reseña-container">
+                            <h4 class="mb-4">Reseñas</h4>
+                            <div id="lista-resenas" class="row row-cols-1 g-3">
+                                <!-- Las reseñas se cargarán aquí dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+<!-- Modal -->
+    <div class="modal fade" id="dramaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="" class="img-fluid rounded mb-3" id="modalImage" style="max-height: 70vh;">
+                    <p id="modalDesc"></p>
+                    <div class="mt-3" id="modalRating"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="#" class="btn btn-primary" id="modalLink">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+<!-- Bootstrap 5 JS Bundle con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función para obtener el nombre del archivo de imagen
+        function obtenerNombreArchivo(kdramaNombre) {
+            const mapaNombres = {
+                "Nos Vemos en mi 19 Vida": "nosvemosenmivida",
+                "Tu Tiempo Llama": "tuTiempoLlama",
+                "Veinticinco Veintiuno": "Veinticinco Veintiuno",
+                "Abogada Woo": "abogadaWoo",
+                "La Reina de las Lagrimas": "la reina de las lagrimas",
+                "Kings The Land": "KingsTheLand",
+                "Itaewon Class": "itaewonclass",
+                "La Buena Mala Madre": "buenamalamadre",
+            };
+            
+            return mapaNombres[kdramaNombre] || kdramaNombre.toLowerCase().replace(/\s+/g, '');
+        }
+
+        // Sistema de votación para el formulario
+        let calificacionSeleccionada = 0;
+        document.querySelectorAll('.estrella-form').forEach(estrella => {
+            estrella.addEventListener('click', function() {
+                const valor = parseInt(this.getAttribute('data-value'));
+                calificacionSeleccionada = valor;
+                
+                // Actualizar visualización de estrellas
+                document.querySelectorAll('.estrella-form').forEach((star, index) => {
+                    star.classList.toggle('active', index < valor);
+                });
+            });
+        });
+
+        // Función para guardar reseñas
+        function guardarResena(kdramaNombre, usuario, comentario, calificacion) {
+            const reseñas = JSON.parse(localStorage.getItem('reseñas')) || {};
+            
+            if (!reseñas[kdramaNombre]) {
+                reseñas[kdramaNombre] = [];
+            }
+            
+            reseñas[kdramaNombre].unshift({
+                usuario,
+                comentario,
+                calificacion,
+                fecha: new Date().toLocaleDateString(),
+                imagen: `../imagenes/${obtenerNombreArchivo(kdramaNombre)}.jpg`,
+                kdramaNombre: kdramaNombre
+            });
+            
+            localStorage.setItem('reseñas', JSON.stringify(reseñas));
+            return reseñas;
+        }
+
+        // Función para mostrar reseñas
+        function mostrarResenas() {
+            const contenedor = document.getElementById('lista-resenas');
+            contenedor.innerHTML = '';
+            
+            const kdramaNombre = "Itaewon class";
+            const reseñas = JSON.parse(localStorage.getItem('reseñas')) || {};
+            const reseñasDorama = reseñas[kdramaNombre] || [];
+            
+            if (reseñasDorama.length === 0) {
+                contenedor.innerHTML = `
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            No hay reseñas todavía. ¡Sé el primero en comentar!
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            reseñasDorama.forEach(resena => {
+                const col = document.createElement('div');
+                col.className = 'col';
+                
+                col.innerHTML = `
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h5 class="card-title">${resena.usuario}</h5>
+                                <div class="text-warning">
+                                    ${'★'.repeat(resena.calificacion)}${'☆'.repeat(5-resena.calificacion)}
+                                </div>
+                            </div>
+                            <p class="card-text">${resena.comentario}</p>
+                            <small class="text-muted">Publicado el: ${resena.fecha}</small>
+                        </div>
+                    </div>
+                `;
+                
+                contenedor.appendChild(col);
+            });
+        }
+
+        // Manejo del formulario de reseñas
+        document.getElementById('form-resena').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const comentario = document.getElementById('comentario').value;
+            const kdramaNombre = "Itaewon class";
+            
+            if(calificacionSeleccionada === 0) {
+                alert('Por favor selecciona una calificación');
+                return;
+            }
+            
+            // Guardar la reseña
+            guardarResena(kdramaNombre, nombre, comentario, calificacionSeleccionada);
+            
+            // Mostrar las reseñas actualizadas
+            mostrarResenas();
+            
+            // Limpiar formulario
+            this.reset();
+            document.querySelectorAll('.estrella-form').forEach(star => {
+                star.classList.remove('active');
+            });
+            calificacionSeleccionada = 0;
+            
+            // Mostrar confirmación
+            alert('¡Tu reseña ha sido publicada!');
+        });
+
+        // Al cargar la página, mostrar las reseñas existentes
+        document.addEventListener('DOMContentLoaded', mostrarResenas);
+    </script>
+<!-- VOTACIONES -->
+    <script>
+            // Función para manejar el clic en las estrellas
+        document.querySelectorAll('.estrella').forEach(estrella => {
+        estrella.addEventListener('click', function () {
+        const kdrama = estrella.getAttribute('data-kdrama');
+        const valor = parseInt(estrella.getAttribute('data-value'));
+
+        // Obtener votos almacenados
+        let votosKdrama = JSON.parse(localStorage.getItem('votos')) || {};
+
+        if (!votosKdrama[kdrama]) {
+            votosKdrama[kdrama] = { votos: [] };
+        }
+
+        // Remplaza el voto solo del usuario, manteniendo los demas
+        votosKdrama[kdrama].votos = [valor]; // Cada usuario solo guarda un voto
+
+        localStorage.setItem('votos', JSON.stringify(votosKdrama));
+
+        // Actualizar la visualización y el ranking
+        actualizarEstrellas(kdrama);
+        calcularPorcentaje(kdrama);
+        mostrarTop3(); // Se actualiza el Top 3 en tiempo real
+        });
+        });
+
+
+
+        // Función para actualizar las estrellas según el voto almacenado
+        function actualizarEstrellas(kdrama) {
+        const votos = JSON.parse(localStorage.getItem('votos')) || {};
+        const estrellas = document.querySelectorAll(`.estrella[data-kdrama="${kdrama}"]`);
+        const votosKdrama = votos[kdrama] ? votos[kdrama].votos : [];
+
+        if (votosKdrama.length) {
+            const ultimoVoto = votosKdrama[votosKdrama.length - 1]; // Último voto
+            estrellas.forEach(estrella => {
+                const valor = parseInt(estrella.getAttribute('data-value'));
+
+                // Marcar las estrellas como doradas si se han seleccionado
+                if (valor <= ultimoVoto) {
+                    estrella.style.color = 'gold';  // Cambiar a dorado
+                } else {
+                    estrella.style.color = ''; // Devolver al color por defecto
+                }
+            });
+        }
+        }
+
+        // Calcular el porcentaje de votos basado en el promedio
+        function calcularPorcentaje(kdrama) {
+        const votos = JSON.parse(localStorage.getItem('votos')) || {};
+        const votosKdrama = votos[kdrama] || { votos: [] };
+        const totalVotos = votosKdrama.votos.length;
+
+        if (totalVotos > 0) {
+            // Calcular el promedio de las estrellas
+            const promedio = votosKdrama.votos.reduce((acc, voto) => acc + voto, 0) / totalVotos;
+
+            // Convertir el promedio a porcentaje
+            const porcentaje = (promedio / 5) * 100;
+
+            const porcentajeElemento = document.getElementById(`porcentaje-${kdrama}`);
+            porcentajeElemento.textContent = `${porcentaje.toFixed(0)}%`;
+        }
+        }
+
+        // Cargar los votos almacenados al cargar la pagina
+        window.onload = function () {
+        const votosGuardados = JSON.parse(localStorage.getItem('votos')) || {};
+        for (const kdrama in votosGuardados) {
+            actualizarEstrellas(kdrama);
+            calcularPorcentaje(kdrama);
+        }
+        };
+    </script>
+    <script>
+        // Función para el modal
+        document.querySelectorAll('.drama > a').forEach(el => {
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dramaCard = this.closest('.drama');
+            const modal = new bootstrap.Modal(document.getElementById('dramaModal'));
+            
+            // Llenar el modal con datos
+            document.getElementById('modalImage').src = this.querySelector('img').src;
+            document.getElementById('modalTitle').textContent = dramaCard.querySelector('h2').textContent;
+            document.getElementById('modalDesc').textContent = dramaCard.querySelector('p').textContent;
+            document.getElementById('modalLink').href = this.href;
+            document.getElementById('modalRating').textContent = dramaCard.querySelector('.porcentajes-kdrama').textContent;
+            
+            // Mostrar modal
+            modal.show();
+        });
+        });
+    </script>
+<!-- MENU -->
+    <script>
+        // Resaltar enlace activo en el menú
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if(link.href === window.location.href) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+
+    </body>
+</html>

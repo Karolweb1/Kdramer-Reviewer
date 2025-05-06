@@ -1,0 +1,1159 @@
+/* ------------------------- */
+/* RESET GENERAL Y TIPOGRAFÍA */
+/* ------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+/* ------------------------- */
+/* BARRA DE NAVEGACIÓN */
+/* ------------------------- */
+.barra-navegacion {
+    background-color: #895DFF;
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand .titulo {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-nav {
+    gap: 0.5rem;
+}
+
+.nav-link {
+    color: white !important;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    color: #ffcc00 !important;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ------------------------- */
+/* HEADER Y TÍTULO PRINCIPAL */
+/* ------------------------- */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+    font-size: 2rem;
+    color: white;
+    margin: 10px 0;
+    margin-top: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.drama-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #333;
+    margin: 0.5rem 0;
+    position: relative;
+    display: inline-block;
+}
+
+.drama-title:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #FF6B81;
+}
+
+/* Estilo para el poster */
+.drama-poster {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.drama-poster img {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: auto;
+}
+
+.drama-poster:hover img {
+    transform: scale(1.03);
+}
+
+.drama-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.drama-desc {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0.5rem 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ------------------------- */
+/* MENÚ PRINCIPAL */
+/* ------------------------- */
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+    background-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.menu a:hover::after {
+    width: 70%;
+    left: 15%;
+}
+
+.menu a.active {
+    background-color: #9d79ff;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* ------------------------- */
+/* LISTADO PRINCIPAL DE K-DRAMAS */
+/* ------------------------- */
+.pagina-principal {
+    background-color: #d2e8ff;
+    min-height: 100vh;
+}
+
+.pagina-principal .listado-dramas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.pagina-principal .listado-dramas .drama {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.pagina-principal .listado-dramas .drama img {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    max-width: 150px;
+}
+
+.listado-dramas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* ------------------------- */
+/* SISTEMA DE VOTACIÓN */
+/* ------------------------- */
+.votacion {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.votacion > h3 {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.votacion-superior {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.vota-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    font-weight: 500;
+}
+
+.votacion-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.estrellas {
+    display: flex;
+    gap: 3px;
+}
+
+.estrellas-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.estrella {
+    font-size: 1.2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.estrella:hover,
+.estrella.active,
+.estrella.seleccionada {
+    color: gold;
+}
+
+.estrellas-con-porcentaje {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.estrella-form {
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s;
+}
+
+.estrella-form:hover, .estrella-form.active {
+    color: gold;
+}
+
+.estrella:hover, .estrella.active {
+    color: #FFD700;
+    transform: scale(1.1);
+}
+
+.porcentajes-kdrama {
+    display: inline-block;
+    margin-left: auto;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #666;
+    background: #f8f9fa;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+}
+
+.porcentaje {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+/* ------------------------- */
+/* TOP 3 RANKING */
+/* ------------------------- */
+.top-rank {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #f39c12;
+    padding: 10px 15px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+.top-rank:hover {
+    background-color: #e67e22;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.top-dramas {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.top-dramas h2 {
+    color: #895DFF;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.top-dramas .top-lista {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.top-dramas .top-lista .drama {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.top-dramas .top-lista .drama h3 {
+    font-size: 1.2rem;
+    color: #895DFF;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.top-dramas .top-lista .drama img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-height: 200px;
+}
+
+/* ------------------------- */
+/* GRID EN INDEX */
+/* ------------------------- */
+
+.drama {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.drama a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border: 3px solid transparent;
+}
+
+.drama a:hover {
+    border-color: #895DFF;
+}
+
+.drama:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    border-color: #895DFF;
+}
+
+.drama img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    filter: brightness(0.95) saturate(0.9);
+    background: white;
+    border: 1px solid #eee;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.drama:hover img {
+    transform: scale(1.05);
+    filter: brightness(1) saturate(1.1);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drama .info {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.drama h2 {
+    font-size: 1.4rem;
+    color: #222;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.drama p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* ------------------------- */
+/* BOTÓN VER MÁS */
+/* ------------------------- */
+.boton, .drama .boton {
+    display: inline-block;
+    text-align: center;
+    background-color: #ff6b81;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.boton:hover, .drama .boton:hover {
+    background-color: #e55b6e;
+}
+
+/* ------------------------- */
+/* RESEÑAS Y FORO */
+/* ------------------------- */
+.foro-cuadro {
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.reseña, .reseña-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reseña img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.resenas-container {
+    margin-top: 60px;
+}
+
+.reseña-container h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+}
+
+.resenas-container h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.reseña-container .votacion {
+    justify-content: center;
+    display: flex;
+}
+
+#lista-resenas .card {
+    margin-bottom: 1rem;
+}
+
+.btn-resena {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: #895DFF;
+    border: 1px solid #895DFF;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-resena:hover {
+    background: #895DFF;
+    color: white;
+}
+
+/* ------------------------- */
+/* CATEGORÍAS */
+/* ------------------------- */
+.categorias {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.categorias h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.categorias p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.card {
+    border-radius: 0.10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-body {
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.card.border-0.shadow-sm {
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    overflow: hidden;
+}
+
+/* Estilos para la página de categorías */
+.btn-categoria {
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid #895DFF;
+    background-color: white;
+    color: #895DFF;
+}
+
+.btn-categoria:hover,
+.btn-categoria.active {
+    background-color: #895DFF;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#titulo-categoria-seleccionada {
+    color: #895DFF;
+    font-weight: 700;
+    border-bottom: 2px solid #895DFF;
+    padding-bottom: 0.5rem;
+}
+
+.card-dorama {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.card-dorama:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.card-dorama-img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.badge-categoria {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.text-warning {
+    color: gold;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+}
+
+.text-muted {
+    font-size: 0.85rem;
+}
+
+.pagina-dorama {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.dorama-header {
+    margin-bottom: 30px;
+}
+
+.dorama-portada {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.dorama-info-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.dorama-titulo {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.dorama-metadata {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.dorama-sinopsis {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.dorama-sinopsis h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.dorama-sinopsis p {
+    color: #555;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+.dorama-img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+/* Badges de categorías */
+.badge {
+    font-weight: 500;
+    padding: 0.5em 0.8em;
+    margin-right: 0.5em;
+}
+
+/* Estilo para la sección de sinopsis (que incluye la reseña) */
+.sinopsis {
+    margin: 25px 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.sinopsis h4 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.sinopsis p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    text-align: justify;
+}
+
+
+/* ------------------------- */
+/* FORMULARIO DE OPINIÓN */
+/* ------------------------- */
+.formulario-opinion {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-opinion h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.formulario-opinion textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.formulario-opinion button {
+    background-color: #895DFF;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.formulario-opinion button:hover {
+    background-color: #7b4ec7;
+}
+
+/* ------------------------- */
+/* RESPONSIVE DESIGN */
+/* ------------------------- */
+@media (max-width: 1024px) {
+    .top-dramas .top-lista {
+        flex-direction: column;
+    }
+
+    .top-dramas .top-lista .drama img {
+        width: 100%;
+    }
+
+    .top-dramas .top-lista .drama h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .card-img-top {
+        height: 400px;
+    }
+}
+
+/* Estilos para móviles */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #895DFF;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 10px;
+    }
+    
+    .navbar-nav {
+        gap: 0.5rem;
+    }
+    
+    .nav-link {
+        padding: 0.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .plataforma-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .menu li {
+        margin: 0 10px;
+    }
+
+    .menu a {
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .menu a:hover {
+        transform: none;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .drama img {
+        height: 200px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+        
+    .card-img-top {
+        height: 350px;
+    }
+
+    .dorama-titulo {
+        font-size: 1.5rem;
+    }
+    
+    .dorama-sinopsis {
+        padding: 15px;
+    }
+
+    .btn-categoria {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .card-dorama-img {
+        height: 200px;
+    }
+}
+
+
+#top-3 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Estilo básico para cada K-drama dinámico */
+#top-3 .drama {
+    flex: 1 1 30%;
+    max-width: 30%;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 2px 2px 10px rgba(118, 6, 255, 0.1);
+}
+
+#top-3 .drama img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* MODIFICACIONES PARA LA PAGINA DE SERIES */
+.galeria-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 30px;
+  }
+  
+  .tarjeta-serie {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .tarjeta-serie:hover {
+    transform: scale(1.05);
+  }
+  
+  .tarjeta-serie img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+  
+  .tarjeta-serie h3 {
+    font-size: 1.1rem;
+    margin: 10px 0 5px;
+    color: #222;
+  }
+  
+  .tarjeta-serie p {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .tarjeta-serie a {
+    display: inline-block;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #c84f6f;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tarjeta-serie a:hover {
+    background-color: #a43e5a;
+  }
+  
+  .titulo-galeria {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+/* Badge por defecto para todas las categorías */
+.badge-categoria {
+    color: white;
+    border: none;
+}
+
+.btn-resena {
+    background-color: #ff6b81;
+    border: none;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.btn-resena:hover {
+    background-color: #e55b6e;
+    color: white;
+}
+
+/* Estilos para las categorías */
+.categorias-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+}
+
+.categoria-badge {
+    padding: 0.35rem 0.7rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.categoria-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    opacity: 0.9;
+}
+
+.categorias-linea {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.categoria-compacta {
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.categoria-compacta:hover {
+    max-width: none;
+    overflow: visible;
+    z-index: 10;
+    position: relative;
+}
+
+.plataforma-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.plataforma-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Colores para cada plataforma */
+.badge-netflix {
+    background-color: #E50914;
+    color: white;
+}
+
+.badge-viki {
+    background-color: #00C0FF;
+    color: white;
+}
+
+.badge-prime {
+    background-color: #003ce1;
+    color: white;
+}
+
+.badge-default {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Ajustes para los botones de filtro */
+.btn-categoria {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 6075d69 (actualizacion de automatizacion)
