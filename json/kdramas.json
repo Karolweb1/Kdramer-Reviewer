@@ -25,7 +25,7 @@
             "url": "../resenas/3dorama.html",
             "categoria": ["Romance", "Drama", "Melodrama"],
             "plataforma": "Viki",
-            "puntuacion": 89
+            "puntuacion": 0
         },
         {
             "nombre": "Abogada Woo",
@@ -34,7 +34,7 @@
             "url": "../resenas/4dorama.html",
             "categoria": ["Legal", "Drama", "Inspiracional"],
             "plataforma": "Netflix",
-            "puntuacion": 89
+            "puntuacion": 0
         },
         {
             "nombre": "Nos Vemos en mi 19 Vida",
@@ -43,7 +43,7 @@
             "url": "resenas/5dorama.html",
             "categoria": ["Romance", "Fantasía", "Reencarnación"],
             "plataforma": "Prime Video",
-            "puntuacion": 89
+            "puntuacion": 0
         },
         {
             "nombre": "La Buena Mala Madre",
@@ -52,7 +52,7 @@
             "url": "../resenas/6dorama.html",
             "categoria": ["Drama", "Familiar", "Emotivo"],
             "plataforma": "Viki",
-            "puntuacion": 89
+            "puntuacion": 0
         },
         {
             "nombre": "Kings The Land",
@@ -61,7 +61,7 @@
             "url": "resenas/5dorama.html",
             "categoria": ["Comedia Romántica", "Corporativa"],
             "plataforma": "Netflix",
-            "puntuacion": 89
+            "puntuacion": 0
         },
         {
             "nombre": "Itaewon class",
@@ -70,7 +70,7 @@
             "enlace": "../resenas/6dorama.html",
             "categoria": ["Drama", "Superación", "Emprendimiento"],
             "plataforma": "Prime Video",
-            "puntuacion": 89
+            "puntuacion": 0
         }
 
     ]

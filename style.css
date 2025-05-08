@@ -712,7 +712,7 @@ main {
 
 .card-text {
     font-size: 1rem;
-    color: #f8f9fa; /* Un blanco muy suave para el texto del párrafo */
+    color: #202020; /* Un blanco muy suave para el texto del párrafo */
     line-height: 1.6;
     margin-bottom: 20px;
 }
