@@ -83,7 +83,7 @@
                 '#D63031', '#FDA7DF', '#B2BEC3', '#FF9F43',
                 '#55E6C1', '#5758BB', '#EE5253', '#341F97'
             ];
-            
+
             // Algoritmo más robusto para generar hashes únicos
             let hash = 0;
             for (let i = 0; i < text.length; i++) {
@@ -91,30 +91,31 @@
                 hash = ((hash << 5) - hash) + char;
                 hash = hash & hash; // Convertir a 32bit integer
             }
-            
+
             // Usar el código ASCII del primer carácter como offset adicional
             const firstCharCode = text.charCodeAt(0);
             const colorIndex = (Math.abs(hash) + firstCharCode) % colors.length;
-            
+
             return colors[colorIndex];
         };
-    
+
         fetch('json/kdramas.json')
             .then(response => response.json())
             .then(data => {
                 const contenedor = document.getElementById('contenedor-dramas');
-                
+
                 data.kdramas.forEach((drama, index) => {
-                    const imagenPath = drama.imagen.startsWith('../') ? 
-                        drama.imagen.replace('../', '') : 
+                    const imagenPath = drama.imagen.startsWith('../') ?
+                        drama.imagen.replace('../', '') :
                         `imagenes/${drama.imagen}`;
-                    
+
                     const urlResena = drama.url || drama.enlace || `resenas/${index + 1}dorama.html`;
-                    
+
                     contenedor.innerHTML += `
                         <article class="drama">
                             <a href="${urlResena}" class="drama-poster">
-                                <img src="${imagenPath}" alt="${drama.nombre || drama.titulo}">
+                                <img src="${imagenPath}" alt="${drama.nombre || drama.titulo}"
+                                    onerror="this.onerror=null; this.src='imagenes/default.jpg'">
                                 <div class="drama-overlay">
                                     <span class="drama-rating">${drama.porcentaje || drama.puntuacion || 0}%</span>
                                 </div>
@@ -134,8 +135,8 @@
                                     <div class="estrellas-container">
                                         <div class="estrellas">
                                             ${[1, 2, 3, 4, 5].map(i => `
-                                                <span class="estrella" 
-                                                    data-value="${i}" 
+                                                <span class="estrella"
+                                                    data-value="${i}"
                                                     data-kdrama="${drama.nombre || drama.titulo}">★</span>
                                             `).join('')}
                                         </div>
@@ -156,135 +157,146 @@
                         </article>
                     `;
                 });
-    
+
                 inicializarVotacion();
+                // Inicializar votaciones existentes al cargar la página
+                const votosGuardados = JSON.parse(localStorage.getItem('votos')) || {};
+                Object.keys(votosGuardados).forEach(kdrama => {
+                    actualizarEstrellas(kdrama);
+                    calcularPorcentaje(kdrama);
+                });
             })
             .catch(error => console.error('Error al cargar los K-Dramas:', error));
-    
+
         // Tus funciones existentes de votación (sin cambios)
         function inicializarVotacion() {
             document.querySelectorAll('.estrella').forEach(estrella => {
                 estrella.addEventListener('click', function() {
                     const kdrama = this.getAttribute('data-kdrama');
                     const valor = parseInt(this.getAttribute('data-value'));
-                    
+
                     let votos = JSON.parse(localStorage.getItem('votos')) || {};
                     if (!votos[kdrama]) votos[kdrama] = { votos: [] };
-                    
+
                     votos[kdrama].votos = [valor];
                     localStorage.setItem('votos', JSON.stringify(votos));
-                    
+
                     actualizarEstrellas(kdrama);
                     calcularPorcentaje(kdrama);
                 });
             });
         }
-    
+
         function actualizarEstrellas(kdrama) {
             const votos = JSON.parse(localStorage.getItem('votos')) || {};
+            const estrellas = document.querySelectorAll(`.estrella[data-kdrama="${kdrama}"]`);
             const votosKdrama = votos[kdrama] ? votos[kdrama].votos : [];
-            
+
             if (votosKdrama.length > 0) {
                 const ultimoVoto = votosKdrama[votosKdrama.length - 1];
-                document.querySelectorAll(`.estrella[data-kdrama="${kdrama}"]`).forEach(estrella => {
+                estrellas.forEach(estrella => {
                     const valor = parseInt(estrella.getAttribute('data-value'));
                     estrella.style.color = valor <= ultimoVoto ? 'gold' : '#ccc';
                 });
             }
         }
-    
+
         function calcularPorcentaje(kdrama) {
             const votos = JSON.parse(localStorage.getItem('votos')) || {};
             const votosKdrama = votos[kdrama] || { votos: [] };
-            
+
             if (votosKdrama.votos.length > 0) {
                 const promedio = votosKdrama.votos.reduce((a, b) => a + b, 0) / votosKdrama.votos.length;
                 const porcentaje = Math.round((promedio / 5) * 100);
-                
+
                 const idSeguro = kdrama.replace(/\s+/g, '');
                 const elemento = document.getElementById(`porcentaje-${idSeguro}`);
                 if (elemento) elemento.textContent = `${porcentaje}%`;
             }
         }
-    
-        // Inicializar votaciones existentes
-        const votosGuardados = JSON.parse(localStorage.getItem('votos')) || {};
-        Object.keys(votosGuardados).forEach(kdrama => {
-            actualizarEstrellas(kdrama);
-            calcularPorcentaje(kdrama);
-        });
-    });
-    </script>
-<!-- PARA QUE CARGUEN DEL js -->
-    <script type="module">
-        import { cargarKdramas } from 'js/kdramasLoader.js';
 
-        cargarKdramas({
-        jsonPath: 'json/kdramas.json',
-        filtroTipo: 'plataforma', // o 'categoria'
-        selectorFiltros: '#filtros-plataformas', // o el que tengas
-        selectorTarjetas: '#contenedor-doramas',
-        selectorTitulo: '#titulo-plataforma-seleccionada'
+        // Listener para el evento storage
+        window.addEventListener('storage', function(event) {
+            if (event.key === 'votos') {
+                // Votos han cambiado en otra pestaña/ventana
+                const votosActualizados = JSON.parse(event.newValue) || {};
+                // Iterar sobre todos los dramas mostrados en la página y actualizar su visualización
+                document.querySelectorAll('.drama').forEach(dramaElement => {
+                    const dramaNameElement = dramaElement.querySelector('.drama-title span');
+                    if (dramaNameElement) {
+                        const kdramaNombre = dramaNameElement.textContent.trim();
+                         // Solo actualizar si hay datos de voto para este drama
+                        if (votosActualizados[kdramaNombre]) {
+                            actualizarEstrellas(kdramaNombre);
+                            calcularPorcentaje(kdramaNombre);
+                        }
+                    }
+                });
+            }
         });
+
+    });
     </script>
     <!-- PARA QUE CARGUEN DEL JSON -->
     <script>
-    fetch('json/kdramas.json') 
-    .then(response => response.json())
-    .then(data => {
-        const contenedor = document.getElementById('listado-series');
-        data.forEach(serie => {
-        contenedor.innerHTML += `
-            <div class="tarjeta-serie">
-            <img src="${serie.imagen}" alt="${serie.titulo}">
-            <h3>${serie.titulo}</h3>
-            <p>Puntuación: ${serie.puntuacion}%</p>
-            <a href="${serie.enlace}">Ver Reseña</a>
-            </div>
-        `;
+    // Este script parece estar duplicado o no se usa correctamente en index.html
+        fetch('json/kdramas.json')
+        .then(response => response.json())
+        .then(data => {
+            const contenedor = document.getElementById('listado-series');
+            // Access the 'kdramas' array within the data
+            data.kdramas.forEach(serie => {
+            contenedor.innerHTML += `
+                    <div class="tarjeta-serie">
+                    <img src="${serie.imagen}" alt="${serie.nombre}">
+                <h3>${serie.nombre}</h3>
+                <p>Puntuación: ${serie.puntuacion}%</p>
+                <a href="${serie.enlace}">Ver Reseña</a>
+                </div>
+            `;
+            });
         });
-    });
     </script>
 <!-- ESTRELLAS DE VOTACIONES -->
     <script>
                 // Función para manejar el clic en las estrellas
         document.querySelectorAll('.estrella').forEach(estrella => {
         estrella.addEventListener('click', function () {
-            const kdrama = estrella.getAttribute('data-kdrama');
-            const valor = parseInt(estrella.getAttribute('data-value'));
+        const kdrama = estrella.getAttribute('data-kdrama');
+        const valor = parseInt(estrella.getAttribute('data-value'));
 
-            // Obtener votos almacenados
-            let votosKdrama = JSON.parse(localStorage.getItem('votos')) || {};
+        // Obtener votos almacenados
+        let votosKdrama = JSON.parse(localStorage.getItem('votos')) || {};
 
-            if (!votosKdrama[kdrama]) {
-                votosKdrama[kdrama] = { votos: [] };
-            }
+        if (!votosKdrama[kdrama]) {
+            votosKdrama[kdrama] = { votos: [] };
+        }
 
-            // Remplaza el voto solo del usuario, manteniendo los demas
-            votosKdrama[kdrama].votos = [valor]; // Cada usuario solo guarda un voto
+        // Remplaza el voto solo del usuario, manteniendo los demas
+        votosKdrama[kdrama].votos = [valor]; // Cada usuario solo guarda un voto
 
-            localStorage.setItem('votos', JSON.stringify(votosKdrama));
+        localStorage.setItem('votos', JSON.stringify(votosKdrama));
 
-            // Actualizar la visualización y el ranking
-            actualizarEstrellas(kdrama);
-            calcularPorcentaje(kdrama);
-            mostrarTop3(); // Se actualiza el Top 3 en tiempo real
+        // Actualizar la visualización y el ranking
+        actualizarEstrellas(kdrama);
+        calcularPorcentaje(kdrama);
+        // mostrarTop3(); // Se actualiza el Top 3 en tiempo real - Esta función no existe en index.html
         });
     });
 
-    
+
 
         // Función para actualizar las estrellas según el voto almacenado
         function actualizarEstrellas(kdrama) {
             const votos = JSON.parse(localStorage.getItem('votos')) || {};
             const estrellas = document.querySelectorAll(`.estrella[data-kdrama="${kdrama}"]`);
             const votosKdrama = votos[kdrama] ? votos[kdrama].votos : [];
-    
+
             if (votosKdrama.length) {
                 const ultimoVoto = votosKdrama[votosKdrama.length - 1]; // Último voto
                 estrellas.forEach(estrella => {
                     const valor = parseInt(estrella.getAttribute('data-value'));
-    
+
                     // Marcar las estrellas como doradas si se han seleccionado
                     if (valor <= ultimoVoto) {
                         estrella.style.color = 'gold';  // Cambiar a dorado
@@ -294,25 +306,26 @@
                 });
             }
         }
-    
-        // Calcular el porcentaje de votos basado en el promedio
+
         function calcularPorcentaje(kdrama) {
             const votos = JSON.parse(localStorage.getItem('votos')) || {};
             const votosKdrama = votos[kdrama] || { votos: [] };
             const totalVotos = votosKdrama.votos.length;
-    
+
             if (totalVotos > 0) {
                 // Calcular el promedio de las estrellas
                 const promedio = votosKdrama.votos.reduce((acc, voto) => acc + voto, 0) / totalVotos;
-    
+
                 // Convertir el promedio a porcentaje
                 const porcentaje = (promedio / 5) * 100;
-    
+
                 const porcentajeElemento = document.getElementById(`porcentaje-${kdrama}`);
-                porcentajeElemento.textContent = `${porcentaje.toFixed(0)}%`;
+                if (porcentajeElemento) { // Verificar si el elemento existe
+                     porcentajeElemento.textContent = `${porcentaje.toFixed(0)}%`;
+                }
             }
         }
-    
+
         // Cargar los votos almacenados al cargar la pagina
         window.onload = function () {
             const votosGuardados = JSON.parse(localStorage.getItem('votos')) || {};
@@ -332,14 +345,14 @@
                 e.preventDefault();
                 const dramaCard = this.closest('.drama');
                 const modal = new bootstrap.Modal(document.getElementById('dramaModal'));
-                
+
                 // Llenar el modal con datos
                 document.getElementById('modalImage').src = this.querySelector('img').src;
                 document.getElementById('modalTitle').textContent = dramaCard.querySelector('h2').textContent;
                 document.getElementById('modalDesc').textContent = dramaCard.querySelector('p').textContent;
                 document.getElementById('modalLink').href = this.href;
                 document.getElementById('modalRating').textContent = dramaCard.querySelector('.porcentajes-kdrama').textContent;
-                
+
                 // Mostrar modal
                 modal.show();
             });
@@ -355,7 +368,6 @@
             }
         });
     </script>
-
 
 
 </body>

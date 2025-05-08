@@ -34,14 +34,12 @@
             </div>
         </nav>
     </header>
-    
+
         <main>
             <h2 class="titulo-galeria">Series Disponibles</h2>
             <div id="listado-series" class="galeria-container"></div>
         </main>
-        
 
-<div id="listado-series"></div>
 
 <!-- PARA QUE CARGUEN DEL js -->
     <script type="module">
@@ -57,15 +55,16 @@
     </script>
 <!-- PARA QUE CARGUEN DEL JSON -->
     <script>
-    fetch('/json/kdramas.json') 
+    fetch('/json/kdramas.json')
     .then(response => response.json())
     .then(data => {
         const contenedor = document.getElementById('listado-series');
-        data.forEach(serie => {
+        // Access the 'kdramas' array within the data
+        data.kdramas.forEach(serie => {
         contenedor.innerHTML += `
             <div class="tarjeta-serie">
-            <img src="${serie.imagen}" alt="${serie.titulo}">
-            <h3>${serie.titulo}</h3>
+            <img src="${serie.imagen}" alt="${serie.nombre}">
+            <h3>${serie.nombre}</h3>
             <p>Puntuación: ${serie.puntuacion}%</p>
             <a href="${serie.enlace}">Ver Reseña</a>
             </div>

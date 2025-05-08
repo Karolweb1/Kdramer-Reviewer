@@ -2,7 +2,7 @@
     "kdramas": [
         {
             "nombre": "Tu Tiempo Llama",
-            "imagen": "tuTiempoLlama.jpg",
+            "imagen": "../imagenes/tuTiempoLlama.jpg",
             "descripcion": "Un drama romantico sobre el destino y el amor a través del tiempo.",
             "url": "resenas/1dorama.html",
             "generos": ["Romance", "Fantasía"],
@@ -11,7 +11,7 @@
         },
         {
             "nombre": "Veinticinco Veintiuno",
-            "imagen": "VeinticincoVeintiuno.jpg",
+            "imagen": "../imagenes/VeinticincoVeintiuno.jpg",
             "descripcion": "Un drama romantico sobre el destino y el amor a través del tiempo.",
             "url": "resenas/2dorama.html",
             "generos": ["Romance", "Fantasía"],

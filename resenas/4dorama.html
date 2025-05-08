@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
-    <!-- Bootstrap 5 CSS -->
+<!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>ABOGADA WOO - Kdramer Reviewer</title>
+    <title>TU TIEMPO LLAMA - Kdramer Reviewer</title>
 </head>
 
 <body class="pagina-principal">
-    <!-- Barra de navegación con menú hamburguesa -->
+
+<!-- Barra de navegación con menú hamburguesa -->
     <header class="barra-navegacion">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
@@ -34,57 +35,63 @@
         </nav>
     </header>
 
-    <!-- Contenido principal -->
+<!-- Contenido principal -->
     <main class="container mt-4">
         <div class="row">
-            <!-- Columna izquierda: Portada y votación -->
+            <!-- Portada -->
             <div class="col-lg-4 mb-4">
                 <div class="card border-0 shadow-sm h-100">
-                    <img src="../imagenes/AbogadaWoo.jpg" class="card-img-top img-fluid" alt="ABOGADA WOO">
+                    <img src="../imagenes/tuTiempoLlama.jpg" class="card-img-top img-fluid" alt="Tu Tiempo Llama">
                     <div class="card-body text-center">
-                        <!-- Sistema de votación (DEBE SER IGUAL) -->
-                        <div class="votacion mt-3">
 
-                        </div>
                     </div>
                 </div>
             </div>
-    
-            <!-- Columna derecha: Información detallada -->
+
+<!-- Información detallada -->
             <div class="col-lg-8">
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-body">
-                        <h1 class="card-title mb-3">ABOGADA WOO</h1>
-                        
-                        <!-- Metadata (Año, episodios, etc.) -->
+                        <h1 class="card-title mb-3" data-kdrama-name="Abogada Woo">Abogada Woo</h1>
+
                         <div class="row g-3 mb-4">
                             <div class="col-md-6 col-lg-3">
                                 <div class="p-3 bg-light rounded">
                                     <h6 class="text-muted mb-2">Año</h6>
-                                    <p class="mb-0">[AÑO]</p>
+                                    <p class="mb-0">2022</p>
                                 </div>
                             </div>
-                            <!-- Repetir para Episodios, Duración, Plataforma -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded">
+                                    <h6 class="text-muted mb-2">Episodios</h6>
+                                    <p class="mb-0">16</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded">
+                                    <h6 class="text-muted mb-2">Duración</h6>
+                                    <p class="mb-0">70 min</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="p-3 bg-light rounded">
+                                    <h6 class="text-muted mb-2">Plataforma</h6>
+                                    <p class="mb-0">Netflix</p>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <!-- Badges de categorías -->
+
                         <div class="mb-4">
                             <span class="badge bg-primary me-1">Romance</span>
-                            <span class="badge bg-danger me-1">[GÉNERO 2]</span>
-                            <!-- Añadir más si es necesario -->
+                            <span class="badge bg-danger me-1">Fantasía</span>
+                            <span class="badge bg-success me-1">Drama</span>
                         </div>
-                        
-                        <!-- Sección de sinopsis (aquí va tu reseña) -->
+
                         <div class="sinopsis mb-4">
                             <h4 class="mb-3">Sinopsis</h4>
                             <p>Un conmovedor drama romántico que sigue la historia de dos almas destinadas a encontrarse a través del tiempo. Cuando una joven escritora descubre que puede comunicarse con el pasado a través de un misterioso reloj antiguo, su vida se entrelaza con la de un pintor de los años 50 en una emotiva historia sobre el amor, el destino y las segundas oportunidades.</p>
                         </div>
 
-
-
-
-                        <!-- Formulario para nueva reseña -->
-                        
                         <!-- Formulario para nueva reseña -->
                         <div class="card mb-4">
                             <div class="card-body">
@@ -97,11 +104,11 @@
                                     <div class="mb-3">
                                         <label class="form-label">Calificación</label>
                                         <div class="estrellas-form d-flex justify-content-center mb-3">
-                                            <span class="estrella-form mx-1" data-value="1">&#9733;</span>
-                                            <span class="estrella-form mx-1" data-value="2">&#9733;</span>
-                                            <span class="estrella-form mx-1" data-value="3">&#9733;</span>
-                                            <span class="estrella-form mx-1" data-value="4">&#9733;</span>
-                                            <span class="estrella-form mx-1" data-value="5">&#9733;</span>
+                                            <span class="estrella-form mx-1" data-value="1">★</span>
+                                            <span class="estrella-form mx-1" data-value="2">★</span>
+                                            <span class="estrella-form mx-1" data-value="3">★</span>
+                                            <span class="estrella-form mx-1" data-value="4">★</span>
+                                            <span class="estrella-form mx-1" data-value="5">★</span>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -112,7 +119,7 @@
                                 </form>
                             </div>
                         </div>
-                        
+
                         <!-- Cuadro de reseñas existentes -->
                         <div class="reseña-container">
                             <h4 class="mb-4">Reseñas</h4>
@@ -125,6 +132,7 @@
             </div>
         </div>
     </main>
+
 
 <!-- Modal -->
     <div class="modal fade" id="dramaModal" tabindex="-1" aria-hidden="true">
@@ -145,7 +153,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
 <!-- Bootstrap 5 JS Bundle con Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -155,15 +163,19 @@
             const mapaNombres = {
                 "Nos Vemos en mi 19 Vida": "nosvemosenmivida",
                 "Tu Tiempo Llama": "tuTiempoLlama",
-                "Veinticinco Veintiuno": "Veinticinco Veintiuno",
-                "Abogada Woo": "abogadaWoo",
-                "La Reina de las Lagrimas": "la reina de las lagrimas",
+                "Veinticinco Veintiuno": "VeinticincoVeintiuno",
+                "Abogada Woo": "AbogadaWoo",
+                "La Reina de las Lagrimas": "lareinadelaslagrimas",
                 "Kings The Land": "KingsTheLand",
-                "Itaewon Class": "itaewonclass",
-                "La Buena Mala Madre": "buenamalamadre",
+                "Itaewon Class": "Itaewonclass",
+                "La Buena Mala Madre": "labuenamalamadre",
             };
-            
-            return mapaNombres[kdramaNombre] || kdramaNombre.toLowerCase().replace(/\s+/g, '');
+
+            // Normalizar el nombre para la búsqueda
+            const nombreNormalizado = kdramaNombre.trim().replace(/\s+/g, ' ');
+
+            // Buscar en el mapa, si no se encuentra, intentar con el nombre normalizado sin espacios
+            return mapaNombres[nombreNormalizado] || mapaNombres[nombreNormalizado.replace(/\s/g, '')] || nombreNormalizado.replace(/\s/g, '');
         }
 
         // Sistema de votación para el formulario
@@ -172,7 +184,7 @@
             estrella.addEventListener('click', function() {
                 const valor = parseInt(this.getAttribute('data-value'));
                 calificacionSeleccionada = valor;
-                
+
                 // Actualizar visualización de estrellas
                 document.querySelectorAll('.estrella-form').forEach((star, index) => {
                     star.classList.toggle('active', index < valor);
@@ -183,20 +195,20 @@
         // Función para guardar reseñas
         function guardarResena(kdramaNombre, usuario, comentario, calificacion) {
             const reseñas = JSON.parse(localStorage.getItem('reseñas')) || {};
-            
+
             if (!reseñas[kdramaNombre]) {
                 reseñas[kdramaNombre] = [];
             }
-            
+
             reseñas[kdramaNombre].unshift({
                 usuario,
                 comentario,
                 calificacion,
                 fecha: new Date().toLocaleDateString(),
-                imagen: `../imagenes/${obtenerNombreArchivo(kdramaNombre)}.jpg`,
-                kdramaNombre: kdramaNombre
+                // No guardamos la imagen aquí, la generaremos al mostrar
+                kdramaNombre: kdramaNombre // Guardamos el nombre del drama
             });
-            
+
             localStorage.setItem('reseñas', JSON.stringify(reseñas));
             return reseñas;
         }
@@ -205,26 +217,38 @@
         function mostrarResenas() {
             const contenedor = document.getElementById('lista-resenas');
             contenedor.innerHTML = '';
-            
-            const kdramaNombre = "Itaewon class";
+
+            // Obtener el nombre del K-drama de la página actual
+            const kdramaNombreElement = document.querySelector('h1[data-kdrama-name]');
+            if (!kdramaNombreElement) {
+                console.error("No se encontró el nombre del K-drama en la página.");
+                return;
+            }
+            const kdramaNombreActual = kdramaNombreElement.getAttribute('data-kdrama-name');
+
             const reseñas = JSON.parse(localStorage.getItem('reseñas')) || {};
-            const reseñasDorama = reseñas[kdramaNombre] || [];
-            
+            // Filtrar reseñas para mostrar solo las del drama actual
+            const reseñasDorama = reseñas[kdramaNombreActual] || [];
+
             if (reseñasDorama.length === 0) {
                 contenedor.innerHTML = `
                     <div class="col-12">
                         <div class="alert alert-info">
-                            No hay reseñas todavía. ¡Sé el primero en comentar!
+                            No hay reseñas todavía para ${kdramaNombreActual}. ¡Sé el primero en comentar!
                         </div>
                     </div>
                 `;
                 return;
             }
-            
+
             reseñasDorama.forEach(resena => {
                 const col = document.createElement('div');
                 col.className = 'col';
-                
+
+                // Usar la función para obtener la ruta de la imagen
+                const nombreArchivo = obtenerNombreArchivo(resena.kdramaNombre);
+                const imagenRuta = `../imagenes/${nombreArchivo}.jpg`;
+
                 col.innerHTML = `
                     <div class="card h-100">
                         <div class="card-body">
@@ -234,12 +258,12 @@
                                     ${'★'.repeat(resena.calificacion)}${'☆'.repeat(5-resena.calificacion)}
                                 </div>
                             </div>
-                            <p class="card-text">${resena.comentario}</p>
+                            <p class="card-text">"${resena.comentario}"</p>
                             <small class="text-muted">Publicado el: ${resena.fecha}</small>
                         </div>
                     </div>
                 `;
-                
+
                 contenedor.appendChild(col);
             });
         }
@@ -247,35 +271,61 @@
         // Manejo del formulario de reseñas
         document.getElementById('form-resena').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const nombre = document.getElementById('nombre').value;
             const comentario = document.getElementById('comentario').value;
-            const kdramaNombre = "Itaewon class";
-            
+
+            // Obtener el nombre del K-drama de la página actual
+            const kdramaNombreElement = document.querySelector('h1[data-kdrama-name]');
+            if (!kdramaNombreElement) {
+                console.error("No se pudo obtener el nombre del K-drama para guardar la reseña.");
+                alert('Ocurrió un error al guardar la reseña.');
+                return;
+            }
+            const kdramaNombreActual = kdramaNombreElement.getAttribute('data-kdrama-name');
+
             if(calificacionSeleccionada === 0) {
                 alert('Por favor selecciona una calificación');
                 return;
             }
-            
-            // Guardar la reseña
-            guardarResena(kdramaNombre, nombre, comentario, calificacionSeleccionada);
-            
+
+            // Guardar la reseña con el nombre del drama actual
+            guardarResena(kdramaNombreActual, nombre, comentario, calificacionSeleccionada);
+
             // Mostrar las reseñas actualizadas
             mostrarResenas();
-            
+
             // Limpiar formulario
             this.reset();
             document.querySelectorAll('.estrella-form').forEach(star => {
                 star.classList.remove('active');
             });
             calificacionSeleccionada = 0;
-            
+
             // Mostrar confirmación
             alert('¡Tu reseña ha sido publicada!');
         });
 
         // Al cargar la página, mostrar las reseñas existentes
         document.addEventListener('DOMContentLoaded', mostrarResenas);
+
+        // Listener para el evento storage para sincronizar votos
+        window.addEventListener('storage', function(event) {
+            if (event.key === 'votos') {
+                // Votos han cambiado en otra pestaña/ventana
+                const votosActualizados = JSON.parse(event.newValue) || {};
+                const kdramaNombreElement = document.querySelector('h1[data-kdrama-name]');
+                if (kdramaNombreElement) {
+                    const kdramaNombreActual = kdramaNombreElement.getAttribute('data-kdrama-name');
+                    // Solo actualizar si hay datos de voto para este drama en los datos actualizados
+                    if (votosActualizados[kdramaNombreActual]) {
+                        actualizarEstrellas(kdramaNombreActual);
+                        calcularPorcentaje(kdramaNombreActual);
+                    }
+                }
+            }
+        });
+
     </script>
 <!-- VOTACIONES -->
     <script>
@@ -300,7 +350,7 @@
         // Actualizar la visualización y el ranking
         actualizarEstrellas(kdrama);
         calcularPorcentaje(kdrama);
-        mostrarTop3(); // Se actualiza el Top 3 en tiempo real
+        // mostrarTop3(); // Se actualiza el Top 3 en tiempo real - Esta función no existe en resenas/*.html
         });
         });
 
@@ -313,7 +363,7 @@
         const votosKdrama = votos[kdrama] ? votos[kdrama].votos : [];
 
         if (votosKdrama.length) {
-            const ultimoVoto = votosKdrama[votosKdrama.length - 1]; // Último voto
+            const ultimoVoto = votosKdrama.votos[votosKdrama.votos.length - 1]; // Último voto
             estrellas.forEach(estrella => {
                 const valor = parseInt(estrella.getAttribute('data-value'));
 
@@ -340,8 +390,16 @@
             // Convertir el promedio a porcentaje
             const porcentaje = (promedio / 5) * 100;
 
-            const porcentajeElemento = document.getElementById(`porcentaje-${kdrama}`);
-            porcentajeElemento.textContent = `${porcentaje.toFixed(0)}%`;
+            // En las páginas de reseña individual, el ID del porcentaje puede ser diferente
+            // Necesitamos encontrar el elemento correcto.
+            // Asumiendo que hay un elemento con la clase 'porcentaje-simple' o similar
+            // asociado a este drama en la página.
+            // Si no hay un elemento específico para el porcentaje en esta página,
+            // esta función solo actualizará las estrellas.
+            const porcentajeElemento = document.querySelector(`.porcentaje-simple[data-kdrama="${kdrama}"]`);
+            if (porcentajeElemento) { // Verificar si el elemento existe
+                 porcentajeElemento.textContent = `${porcentaje.toFixed(0)}%`;
+            }
         }
         }
 
@@ -361,14 +419,14 @@
             e.preventDefault();
             const dramaCard = this.closest('.drama');
             const modal = new bootstrap.Modal(document.getElementById('dramaModal'));
-            
+
             // Llenar el modal con datos
             document.getElementById('modalImage').src = this.querySelector('img').src;
             document.getElementById('modalTitle').textContent = dramaCard.querySelector('h2').textContent;
             document.getElementById('modalDesc').textContent = dramaCard.querySelector('p').textContent;
             document.getElementById('modalLink').href = this.href;
             document.getElementById('modalRating').textContent = dramaCard.querySelector('.porcentajes-kdrama').textContent;
-            
+
             // Mostrar modal
             modal.show();
         });
