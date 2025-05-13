@@ -1,0 +1,84 @@
+{
+    "kdramas": [
+        {
+            "nombre": "Tu Tiempo Llama",
+            "imagen": "../imagenes/tuTiempoLlama.jpg",
+            "descripcion": "Una conmovedora historia de amor que trasciende el tiempo, donde una mujer viaja al pasado para cambiar su destino. Con actuaciones memorables y una trama que mezcla romance y fantasía.",
+            "alt": "Poster de Tu Tiempo Llama mostrando a los protagonistas en diferentes épocas",
+            "url": "resenas/1dorama.html",
+            "generos": ["Romance", "Fantasía"],
+            "plataforma": "Viki",
+            "porcentaje": 0
+        },
+        {
+            "nombre": "Veinticinco Veintiuno",
+            "imagen": "../imagenes/VeinticincoVeintiuno.jpg",
+            "descripcion": "Una historia de crecimiento personal y amor juvenil ambientada durante la crisis financiera asiática de los 90. Sigue los sueños y desafíos de un grupo de jóvenes esgrimistas.",
+            "alt": "Poster de Veinticinco Veintiuno con los protagonistas practicando esgrima",
+            "url": "resenas/2dorama.html",
+            "generos": ["Romance", "Deporte", "Drama"],
+            "plataforma": "Viki",
+            "porcentaje": 0
+        },
+        {
+            "nombre": "La Reina de las Lágrimas",
+            "imagen": "../imagenes/lareinadelaslagrimas.jpg",
+            "descripcion": "Un intenso melodrama sobre el amor prohibido entre una heredera de un conglomerado y un oficial norcoreano. Una historia de sacrificio, lealtad y amor que desafía todas las barreras.",
+            "alt": "Poster dramático de La Reina de las Lágrimas con los protagonistas en primer plano",
+            "url": "../resenas/3dorama.html",
+            "categoria": ["Romance", "Drama", "Melodrama"],
+            "plataforma": "Viki",
+            "puntuacion": 0
+        },
+        {
+            "nombre": "Abogada Woo",
+            "imagen": "../imagenes/AbogadaWoo.jpg",
+            "descripcion": "Una brillante abogada con autismo enfrenta los desafíos de la profesión legal mientras lucha por ser aceptada. Una historia inspiradora sobre neurodiversidad y superación personal.",
+            "alt": "Poster de Abogada Woo mostrando a la protagonista en su despacho legal",
+            "url": "../resenas/4dorama.html",
+            "categoria": ["Legal", "Drama", "Inspiracional"],
+            "plataforma": "Netflix",
+            "puntuacion": 0
+        },
+        {
+            "nombre": "Nos Vemos en mi 19 Vida",
+            "imagen": "../imagenes/nosvemosenmivida.jpg",
+            "descripcion": "Una mujer que ha reencarnado 18 veces busca desesperadamente a su amor verdadero en su 19ª vida. Una historia mágica sobre el destino y las conexiones eternas.",
+            "alt": "Poster fantástico de Nos Vemos en mi 19 Vida con elementos místicos",
+            "url": "resenas/5dorama.html",
+            "categoria": ["Romance", "Fantasía", "Reencarnación"],
+            "plataforma": "Prime Video",
+            "puntuacion": 0
+        },
+        {
+            "nombre": "La Buena Mala Madre",
+            "imagen": "../imagenes/labuenamalamadre.jpg",
+            "descripcion": "Una madre estricta y su hijo distanciado deben reconstruir su relación cuando él sufre un accidente. Una emotiva historia sobre perdón, familia y segundas oportunidades.",
+            "alt": "Poster emotivo de La Buena Mala Madre mostrando a madre e hijo",
+            "url": "../resenas/6dorama.html",
+            "categoria": ["Drama", "Familiar", "Emotivo"],
+            "plataforma": "Viki",
+            "puntuacion": 0
+        },
+        {
+            "nombre": "King the Land",
+            "imagen": "../imagenes/KingsTheLand.jpg",
+            "descripcion": "Una divertida comedia romántica sobre el heredero de un imperio hotelero y una empleada optimista que no puede evitar chocar con él. Química explosiva y situaciones hilarantes.",
+            "alt": "Poster colorido de King the Land con los protagonistas sonriendo",
+            "url": "resenas/5dorama.html",
+            "categoria": ["Comedia Romántica", "Corporativa"],
+            "plataforma": "Netflix",
+            "puntuacion": 0
+        },
+        {
+            "nombre": "Itaewon Class",
+            "imagen": "../imagenes/Itaewonclass.jpg",
+            "descripcion": "Un joven busca venganza contra un poderoso conglomerado mientras construye su propio negocio en el vibrante barrio de Itaewon. Una historia de perseverancia y justicia.",
+            "alt": "Poster urbano de Itaewon Class mostrando el dinámico vecindario",
+            "enlace": "../resenas/6dorama.html",
+            "categoria": ["Drama", "Superación", "Emprendimiento"],
+            "plataforma": "Prime Video",
+            "puntuacion": 0
+        }
+    ]
+}
