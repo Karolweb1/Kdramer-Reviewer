@@ -1353,6 +1353,7 @@ main {
     width: 100%;
     overflow: hidden; /* Evita el desbordamiento */
 }
+<<<<<<< HEAD
 
 
 
@@ -1490,3 +1491,5 @@ main {
         height: 350px;
     }
 }
+=======
+>>>>>>> 49757aa5363b1972b529aa8ec10b677ecc48d6a7
